@@ -53,6 +53,7 @@ export const login = (userName, password) => (dispatch) => {
 
       return Promise.resolve();
     },
+
     (error) => {
       const message =
         (error.response && error.response.data && error.response.data.message) ||
@@ -75,7 +76,6 @@ export const login = (userName, password) => (dispatch) => {
 
 export const logout = () => (dispatch) => {
   AuthService.logout();
-
   dispatch({
     type: LOGOUT,
   });

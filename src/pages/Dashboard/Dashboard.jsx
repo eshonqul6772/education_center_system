@@ -1,11 +1,15 @@
 import React from 'react';
 
-function Dashboard (props) {
-    return (
-        <div>
+import Menu from '../Dashboard';
 
-            <h2>dashboard</h2>
-        </div>
+function Dashboard () {
+
+
+
+    return (
+        <>
+           <Menu/>
+        </>
     );
 }
 
