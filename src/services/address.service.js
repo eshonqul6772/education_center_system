@@ -8,12 +8,6 @@ const getAdress = () => {
   return axios.get(API_URL + '/address', { headers: authHeader() });
 };
 
-const deleteAddress = (id) => {
-  return axios.delete(API_URL + '/address/' + id, { headers: authHeader() });
-};
 
 
-export default {
-    getAdress,
-    deleteAddress
-};
+export default getAdress

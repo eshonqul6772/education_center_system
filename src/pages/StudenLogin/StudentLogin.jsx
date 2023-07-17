@@ -1,28 +1,78 @@
-import React from 'react'
-import {Input,Button } from "antd"
+import React, {useState} from 'react'
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import {Input } from "antd"
 
 import Logo from '../../assets/imgs/muazacademy.png'
 import Img from "../../assets/imgs/teacher.jpg"
 import "./StudentLogin.scss"
+import { login } from '../../reducers/actions/auth';
 
- const StudenLogin = () => {
+
+const StudenLogin = () => {
+   const dispatch = useDispatch();
+   const navigate = useNavigate('')
+
+
+  const [values, setValues] = useState({
+    username: '',
+    password: '',
+  });
+
+  const handleInputChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    dispatch(login(values.username, values.password))
+      .then((res) => {
+        console.log(res)
+        navigate("/dashbaord")
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+
   return (
     <>
      <div className='wrapper'>
-      <form action="">
+      <form  onSubmit={handleSubmit} action="">
 
         <div>
           <img style={{width:"300px", height:"60px"}} src={Logo} alt={"logo"}/>
 
         </div>
+        
 
 
           <img src={Img} alt='img' style={{width:"350px", height:"230px", borderRadius:"15px"}}/>
 
           <div className='form__box'>
-              <Input placeholder="Tel Number" />
-              <Input.Password placeholder="password" />
-          </div>
+
+          
+              <Input 
+                type='text'
+                name='username'
+                placeholder='login'
+                value={values.username}
+                onChange={handleInputChange} />
+           
+        
+        
+          <Input.Password
+             type='password'
+                name='password'
+                placeholder='Password'
+                value={values.password}
+                onChange={handleInputChange}
+           />
+             
+           
+            </div>
 
           <button  className='btn__submit' >Login</button>
       </form>
@@ -31,4 +81,4 @@ import "./StudentLogin.scss"
   )
 }
 
-export default StudenLogin
+export default StudenLogin;
