@@ -7,7 +7,11 @@ import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import store from './reducers/store';
+<<<<<<< HEAD
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+=======
+
+>>>>>>> origin/main
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

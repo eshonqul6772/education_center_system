@@ -29,7 +29,11 @@ const StudenLogin = () => {
     dispatch(login(values.username, values.password))
       .then((res) => {
         console.log(res)
+<<<<<<< HEAD
         navigate("/dashbaord")
+=======
+        navigate("/dasbaord")
+>>>>>>> origin/main
       })
       .catch((err) => {
         console.log(err);
