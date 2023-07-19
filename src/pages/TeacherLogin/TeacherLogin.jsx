@@ -1,6 +1,6 @@
-import useState from 'react'
-import {Input } from "antd"
+import {useState} from 'react'
 import { useDispatch } from 'react-redux';
+import { Input } from 'antd';
 
 import Logo from '../../assets/imgs/muazacademy.png'
 import Img from "../../assets/imgs/teacher.jpg"
@@ -46,7 +46,7 @@ import { login } from '../../reducers/actions/auth';
 
           <div className='form__box'>
 
-           <input
+           <Input
              type='text'
                 name='userName'
                 placeholder='login'
@@ -54,8 +54,8 @@ import { login } from '../../reducers/actions/auth';
                 onChange={handleInputChange}
            />
 
-           <input
-             type='password'
+           <Input.Password
+             
                 name='password'
                 placeholder='Password'
                 value={values.password}

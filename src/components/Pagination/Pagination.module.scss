@@ -1,0 +1,51 @@
+.wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: block;
+
+  &Link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    margin: 0 4px;
+    color: var(--content-primary);
+    font-weight: 600;
+    font-size: 13px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: none;
+    user-select: none;
+
+    &:hover {
+      color: var(--content-white);
+    }
+  }
+
+  &Active {
+    display: block;
+
+    &Link {
+      background-color: var(--background-green);
+      color: var(--content-white);
+    }
+  }
+
+  &Disabled {
+    .itemLink,
+    .itemIcon {
+      background-color: var(--background-secondary);
+      color: var(--content-primary);
+      opacity: .75;
+      cursor: not-allowed;
+    }
+  }
+}

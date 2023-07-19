@@ -2,7 +2,9 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { FaUserAlt } from 'react-icons/fa';
 import {AiOutlineTeam} from "react-icons/ai"
-
+import {PiStudentBold} from "react-icons/pi"
+import {MdGroups2} from "react-icons/md"
+import {LiaUserCircleSolid} from "react-icons/lia"
 
 import './Menu.scss';
 import Logo from '../../assets/imgs/muazacademy.png';
@@ -23,14 +25,14 @@ function Menu() {
         <li className='menu__list-item'>
           <NavLink
             className={({ isActive }) => (isActive ? 'menu__link active' : 'menu__link')}
-            to='/users'
+            to='/user'
           >
-            <FaUserAlt size='40px' />  Users
+            <LiaUserCircleSolid size='40px' />  Users
           </NavLink>
         </li>
         
         <li className='menu__list-item'>
-          <NavLink className='menu__link' to='/group'>
+          <NavLink className='menu__link' to='/team'>
             <AiOutlineTeam size="40px"/> Teacher
           </NavLink>
         </li>
@@ -38,9 +40,9 @@ function Menu() {
         <li className='menu__list-item'>
           <NavLink
             className={({ isActive }) => (isActive ? 'menu__link active' : 'menu__link')}
-            to='/team'
+            to='/group'
           >
-            <FaUserAlt size='40px' />  Group
+            <MdGroups2 size='40px' />  Group
           </NavLink>
         </li>
 
@@ -50,7 +52,7 @@ function Menu() {
             className={({ isActive }) => (isActive ? 'menu__link active' : 'menu__link')}
             to='/student'
           >
-            <FaUserAlt size='40px' />  Student
+            <PiStudentBold size='40px' />  Student
           </NavLink>
         </li>
 

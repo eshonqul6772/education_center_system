@@ -1,43 +1,78 @@
-import React from 'react'
+import { useState } from 'react';
+import { MdDelete, MdModeEdit } from 'react-icons/md';
+import {  Modal } from 'antd';
 
-import { MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
- const User = () => {
+
+import Button from '../../../components/Button';
+import AddUser  from "../../../components/AddUser"
+import './User.scss';
+
+function User() {
+
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  
+
+
   return (
+    <>
+      <div className='table__box'>
+        <div className='table-responsive '>
+          <table className='table '>
+            <thead className='' style={{ backgroundColor: '#003681', color: 'white' }}>
+              <tr className='p-4 table__head'>
+                <th style={{ textAlign: 'start' }}>firstName</th>
+                <th>firstName</th>
+                <th>tel</th>
+                <th>subject</th>
+                <th style={{ textAlign: 'end' }}>operation</th>
+              </tr>
+            </thead>
 
-     <div>
-      <MDBTable>
-       <MDBTableHead light>
-        <tr>
-         <th scope='col'>#</th>
-         <th scope='col'>First</th>
-         <th scope='col'>Last</th>
-         <th scope='col'>Handle</th>
-        </tr>
-       </MDBTableHead>
-       <MDBTableBody>
-        <tr>
-         <th scope='row'>1</th>
-         <td>Mark</td>
-         <td>Otto</td>
-         <td>@mdo</td>
-        </tr>
-        <tr>
-         <th scope='row'>2</th>
-         <td>Jacob</td>
-         <td>Thornton</td>
-         <td>@fat</td>
-        </tr>
-        <tr>
-         <th scope='row'>3</th>
-         <td>Larry</td>
-         <td>the Bird</td>
-         <td>@twitter</td>
-        </tr>
-       </MDBTableBody>
-      </MDBTable>
-     </div>
-  )
+            <tbody>
+
+              <tr>
+                    <td style={{ textAlign: 'start' }}>Sunnat</td>
+                    <td>Alijonov</td>
+                    <td>+998 971674748</td>
+                    <td>MTH002</td>
+                    <td>
+                      <div className='d-flex align-items-center justify-content-end gap-3'>
+                        <button className='edit__btn'>
+                          <MdModeEdit />
+                        </button>
+
+                        <Button variant="danger" title={  <MdDelete size='25px' />}  onClick={showModal}  className='delet__btn'/>
+                        
+                      </div>
+                    </td>
+                  </tr>
+            </tbody>
+          </table>
+        
+        </div>
+    
+    <AddUser/>
+      </div>
+
+      <Modal footer={null} title="You want to delete this user" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+      <div className='d-flex justify-content-end gap-4 mt-4'>
+           <Button title='cancel' variant='neutral' onClick={handleCancel}/>
+            <Button title='delete' variant='danger-delete' />
+         </div>
+      </Modal>
+    </>
+  );
 }
 
-
-export default User
+export default User;

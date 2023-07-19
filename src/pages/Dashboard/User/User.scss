@@ -1,0 +1,51 @@
+.edit__btn {
+    border-radius: 5px;
+    background: #c0dfea;
+    color: #01384d;
+    border: none;
+    padding: 6px;
+    font-size: 25px;
+  }
+  
+  .addBtn {
+    width: 100%;
+    border-radius: 7px;
+    background: #01384d;
+    padding: 14px;
+    color: #fff;
+    text-align: center;
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  
+  .add__btn-box {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  
+    button{
+      width: 150px;
+  
+      &:hover{
+        background-color: white;
+        color: #01384d;
+        border: 1px solid #01384d;
+      }
+    }
+  }
+  
+  
+  .delet-btn{
+    padding: 9px 29px;
+    color: #D61F1F !important;
+    font-family: Montserrat ,sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border-radius: 5px;
+    background: #fa9b9b;
+  }
