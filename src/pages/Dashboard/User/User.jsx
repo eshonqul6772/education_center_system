@@ -9,6 +9,7 @@ import './User.scss';
 
 function User() {
 
+    const arr = [1,2,3,4,5,6,7,8,9]
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
@@ -41,22 +42,29 @@ function User() {
 
             <tbody>
 
-              <tr>
-                    <td style={{ textAlign: 'start' }}>Sunnat</td>
-                    <td>Alijonov</td>
-                    <td>+998 971674748</td>
-                    <td>MTH002</td>
-                    <td>
-                      <div className='d-flex align-items-center justify-content-end gap-3'>
-                        <button className='edit__btn'>
-                          <MdModeEdit />
-                        </button>
+            {
+                arr.map((e, i)=>{
+                    return(
+                        <tr key={i}>
+                            <td style={{ textAlign: 'start' }}>Sunnat</td>
+                            <td>Alijonov</td>
+                            <td>+998 971674748</td>
+                            <td>MTH002</td>
+                            <td>
+                                <div className='d-flex align-items-center justify-content-end gap-3'>
+                                    <button className='edit__btn'>
+                                        <MdModeEdit />
+                                    </button>
 
-                        <Button variant="danger" title={  <MdDelete size='25px' />}  onClick={showModal}  className='delet__btn'/>
-                        
-                      </div>
-                    </td>
-                  </tr>
+                                    <Button variant="danger" title={  <MdDelete size='25px' />}  onClick={showModal}  className='delet__btn'/>
+
+                                </div>
+                            </td>
+                        </tr>
+                    )
+                })
+            }
+
             </tbody>
           </table>
         

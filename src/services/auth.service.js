@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://3150-195-158-21-166.ngrok-free.app';
+const API_URL = 'http://localhost:8080';
 
 const register = (username, email, password) => {
   return axios.post(API_URL + '/signup', {

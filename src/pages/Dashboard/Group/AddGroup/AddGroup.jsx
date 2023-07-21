@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Modal } from 'antd';
 
 
+import AddUserService from "../../../../services/group.service"
 import Button from "../../../../components/Button"
 import "./AddGroup.scss"
 
 const AddUser = () => {
+  const [values, setValues] = useState({
+    category: '',
+  });
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
@@ -20,6 +24,26 @@ const AddUser = () => {
     setIsModalOpen(false);
   };
 
+
+  const hendelSubmit = (evt) => {
+    evt.preventDefault();
+
+    const data = {
+      group: values.group,
+     
+    };
+
+    AddUserService.getAll(data)
+      .then((res) => {
+        alert('add category');
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+   
+  };
+
   return (
     <>
     <Button title='add__user' onClick={showModal} variant='primary'/>
@@ -27,7 +51,7 @@ const AddUser = () => {
 
 
 
-        <form className='form-texnolgy'>
+        <form onSubmit={hendelSubmit} className='form-texnolgy'>
           <div>
 
 
@@ -37,7 +61,7 @@ const AddUser = () => {
                   <label className='form__category-lable' htmlFor=''>
                     group_name
                   </label>
-                  <input type='text' placeholder='group name' />
+                  <input   onChange={(e) => setValues({ ...values, category: e.target.value })} type='text' placeholder='group name' />
                 </div>
 
                 <Button title='add' variant='primary'/>

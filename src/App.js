@@ -17,7 +17,7 @@ import Student from "./pages/Dashboard/Student";
 
 function App() {
 
-  const { isLoggedIn } = useSelector((state) => state.auth);
+  /* const { isLoggedIn } = useSelector((state) => state.auth);
 
   if (!isLoggedIn) {
     return (
@@ -29,11 +29,7 @@ function App() {
         <Route path="/teacher" element={<TeacherLogin />}/>
       </Routes>
     );
-  }
-
-
-
-
+  } */
 
   return (
     <>
