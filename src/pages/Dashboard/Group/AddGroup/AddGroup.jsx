@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Modal } from 'antd';
 
 
-import AddUserService from "../../../../services/group.service"
+import AddGroup from "../../../../services/group.service"
 import Button from "../../../../components/Button"
 import "./AddGroup.scss"
 
@@ -33,7 +33,7 @@ const AddUser = () => {
      
     };
 
-    AddUserService.getAll(data)
+    AddGroup.getAll(data)
       .then((res) => {
         alert('add category');
         console.log(res)
@@ -53,7 +53,6 @@ const AddUser = () => {
 
         <form onSubmit={hendelSubmit} className='form-texnolgy'>
           <div>
-
 
             <div className='form__list'>
               <div>

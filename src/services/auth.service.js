@@ -13,16 +13,16 @@ const register = (username, email, password) => {
 const login = (username, password) => {
 
   return axios
-    .post(API_URL + '/api/v1/auth/login', {
+    .post(API_URL + '/api/v1/auth/login',{
       username,
       password,
     })
     .then((response) => {
-      console.log(response);
-      if (response.data.accessToken) {
-        localStorage.setItem('token', response.data.accessToken);
-        return response.data;
+      if (response.data.token) {
+        localStorage.setItem('token', response.data.token);
+        console.log(response.data)
       }
+      return response.data;
     });
 };
 
