@@ -13,19 +13,19 @@ const addUser = (id) => {
 };
 
 
-const delet = (id) => {
-  return axios.delete(API_URL + '/api/v1/groups/list', + id, { headers: authHeader() });
+const remove = (id) => {
+  return axios.delete(API_URL + '/api/v1/groups/', + id, { headers: authHeader() });
 };
 
 
 const ubdate = (id) => {
-  return axios.put(API_URL + '/api/v1/groups/list', + id, { headers: authHeader() });
+  return axios.put(API_URL + '/api/v1/groups', + id, { headers: authHeader() });
 };
 
 
 export default {
   getAll,
   addUser,
-  delet,
+  remove,
   ubdate
 }
