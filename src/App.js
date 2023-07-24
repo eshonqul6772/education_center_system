@@ -17,19 +17,19 @@ import Student from "./pages/Dashboard/Student";
 
 function App() {
 
-  /* const { isLoggedIn } = useSelector((state) => state.auth);
+  //  const { isLoggedIn } = useSelector((state) => state.auth);
 
-  if (!isLoggedIn) {
-    return (
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route exact path='/students' element={<StudentLogin />} />
-        <Route path='/staf' element={<Staf />} />
-        <Route path='/admin' element={<AdminLogin />} />
-        <Route path="/teacher" element={<TeacherLogin />}/>
-      </Routes>
-    );
-  } */
+  // if (!isLoggedIn) {
+  //   return (
+  //     <Routes>
+  //       <Route path='/' element={<Home />} />
+  //       <Route exact path='/students' element={<StudentLogin />} />
+  //       <Route path='/staf' element={<Staf />} />
+  //       <Route path='/admin' element={<AdminLogin />} />
+  //       <Route path="/teacher" element={<TeacherLogin />}/>
+  //     </Routes>
+  //   );
+  // } 
 
   return (
     <>

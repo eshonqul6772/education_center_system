@@ -8,6 +8,24 @@ const getAll = (data) => {
   return axios.get(API_URL + '/api/v1/groups/list', data, { headers: authHeader() });
 };
 
+const addUser = (id) => {
+  return axios.post(API_URL + '/api/v1/groups/list', + id, { headers: authHeader() });
+};
 
 
-export default getAll
+const delet = (id) => {
+  return axios.delete(API_URL + '/api/v1/groups/list', + id, { headers: authHeader() });
+};
+
+
+const ubdate = (id) => {
+  return axios.put(API_URL + '/api/v1/groups/list', + id, { headers: authHeader() });
+};
+
+
+export default {
+  getAll,
+  addUser,
+  delet,
+  ubdate
+}

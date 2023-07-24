@@ -4,7 +4,7 @@ import {  Modal } from 'antd';
 
 
 import Button from '../../../components/Button';
-import AddUser  from "../../../components/AddUser"
+import AddStudent  from "./AddStudent"
 import './Student.scss';
 
 function Student() {
@@ -46,8 +46,8 @@ function Student() {
                 arr.map((e, i)=>{
                   return(
                       <tr key={i}>
-                        <td style={{ textAlign: 'start' }}>Sunnat</td>
-                        <td>Alijonov</td>
+                        <td style={{ textAlign: 'start' }}>Eshonqul</td>
+                        <td>Abdulazizov</td>
                         <td>+998 971674748</td>
                         <td>MTH002</td>
                         <td>
@@ -70,7 +70,7 @@ function Student() {
 
           </div>
 
-          <AddUser/>
+          <AddStudent/>
         </div>
 
         <Modal footer={null} title="You want to delete this user" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>

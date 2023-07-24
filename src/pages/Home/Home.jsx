@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <>
       <div>
-        <div className='container'>
+        <div className='containers'>
           <div className='choose__profile'>
             <div>
               <div style={{marginBottom: "200px"}}>

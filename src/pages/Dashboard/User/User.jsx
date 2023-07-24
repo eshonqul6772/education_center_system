@@ -35,7 +35,7 @@ function User() {
                 <th style={{ textAlign: 'start' }}>firstName</th>
                 <th>firstName</th>
                 <th>tel</th>
-                <th>subject</th>
+              
                 <th style={{ textAlign: 'end' }}>operation</th>
               </tr>
             </thead>
@@ -49,7 +49,7 @@ function User() {
                             <td style={{ textAlign: 'start' }}>Sunnat</td>
                             <td>Alijonov</td>
                             <td>+998 971674748</td>
-                            <td>MTH002</td>
+                         
                             <td>
                                 <div className='d-flex align-items-center justify-content-end gap-3'>
                                     <button className='edit__btn'>

@@ -1,17 +1,14 @@
 import { useState } from 'react';
-import { MdDelete, MdModeEdit } from 'react-icons/md';
+import { MdDelete } from 'react-icons/md';
 import {  Modal } from 'antd';
 
 
 import AddGroup from "./AddGroup"
 import Button from '../../../components/Button';
 import './Group.scss';
+import EditGroup from "./EditGroup";
 
 function Group() {
-
-
-
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -22,14 +19,9 @@ function Group() {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-
-  
-
-
   return (
     <>
       <div className='table__box'>
-      
           <table className='table '>
             <thead className='' style={{ backgroundColor: '#003681', color: 'white' }}>
             <tr className='p-4 table__head'>
@@ -38,20 +30,13 @@ function Group() {
                 <th style={{ textAlign: 'end' }}>operation</th>
               </tr>
             </thead>
-
             <tbody>
-
             <tr>
                     <td style={{ textAlign: 'start' }}>MTH002</td>
-                   
                     <td>
                       <div className='d-flex align-items-center justify-content-end gap-3'>
-                        <button className='edit__btn'>
-                          <MdModeEdit />
-                        </button>
-
+                          <EditGroup/>
                         <Button variant="danger" title={  <MdDelete size='25px' />}  onClick={showModal}  className='delet__btn'/>
-                        
                       </div>
                     </td>
                   </tr>

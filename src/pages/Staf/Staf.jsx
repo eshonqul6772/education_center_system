@@ -12,7 +12,7 @@ const Staf = () => {
     return (
         <>
             <div>
-                <div className='container'>
+                <div className='containers'>
                     <div className='choose__stafe'>
                         <div>
                             <div style={{marginBottom: "150px"}}>
