@@ -7,13 +7,24 @@ import AddGroup from "../../../../services/group.service"
 import Button from "../../../../components/Button"
 import "./AddGroup.scss"
 
+const { Option, OptGroup } = Select;
+
 const AddUser = () => {
+
+
 
   const [subject, setSubject] = useState([])
   const [values, setValues] = useState({
     name: '',
     subjectValue: '',
+    status: ''
   });
+
+
+  function handleChange(value) {
+    console.log(`selected ${value}`);
+  }
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
@@ -33,11 +44,12 @@ const AddUser = () => {
     evt.preventDefault();
 
     const data = {
-      subjext: values.name,
-      values: values.subjectValue
+      name: values.name,
+      subject_id: values.subjectValue,
+      status: values.status
     };
 
-    AddGroup.getAll(data)
+    AddGroup.addUser(data)
       .then((res) => {
         alert('add category');
         console.log(res)
@@ -67,15 +79,15 @@ const AddUser = () => {
                   <label className='form__category-lable' htmlFor=''>
                     group_name
                   </label>
-                  <input onChange={(e) => setValues({ ...values, category: e.target.value })} type='text' placeholder='group name' />
+                  <input onChange={(e) => setValues({ ...values, name: e.target.value })} type='text' placeholder='group name' />
                 </div>
 
                 <div className='d-flex flex-column mb-3'>
                   <label className='form__category-lable' htmlFor=''>
                     subject
                   </label>
-                  <Select onSelect={(e) => setValues({ ...values, subjectValue: e})}
-                    
+                  <Select onSelect={(e) => setValues({ ...values, subjectValue: e })}
+
                     style={{
                       width: 515,
                     }}
@@ -84,9 +96,21 @@ const AddUser = () => {
                       label: item.name
                     }))}
                   />
+
+                  <Select  className='mt-4'
+                  onSelect={(e) => setValues({ ...values, status:e })}
+                    defaultValue="ACTIVE"
+                    style={{ width: 515 }}
+                    onChange={handleChange}
+                  >
+                    <OptGroup label="status">
+                      <Option value="ACTIVE">ACTIVE</Option>
+                      <Option value="NOACTIVE">NO_ACTIVE</Option>
+                    </OptGroup>
+                  </Select>
                 </div>
 
-                <Button onClick={hendelSubmit} title='add' variant='primary' type='sumit'/>
+                <Button onClick={hendelSubmit} title='add' variant='primary' type='sumit' />
               </div>
             </div>
           </div>

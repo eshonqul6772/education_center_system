@@ -1,33 +1,23 @@
 import {useEffect, useState} from 'react';
+import { Modal } from 'antd'
 import {MdDelete} from 'react-icons/md';
-import {Modal} from 'antd';
-import ReactPaginate from "react-paginate";
 
+// import ReactPaginate from "react-paginate";
+
+
+import './Group.scss';
 import GetGroupServices from "../../../services/group.service"
 import Button from '../../../components/Button';
 import AddGroup from "./AddGroup"
 import EditGroup from "./EditGroup";
-import './Group.scss';
+import DeletGroupServisec from "../../../services/group.service.js"
 
 function Group() {
 
-    const [data, setGroup] = useState([]);
+    const [group, setGroup] = useState([]);
+
     const [isModalOpen, setIsModalOpen] = useState(false);
-
-    const itemsPerPage = 10;
-    const [currentPage, setCurrentPage] = useState(0);
-
-    const pageCount = Math.ceil(data.length / itemsPerPage);
-
-    const handlePageChange = ({selected}) => {
-        setCurrentPage(selected);
-    };
-
-    const getCurrentPageData = () => {
-        const start = currentPage * itemsPerPage;
-        const end = start + itemsPerPage;
-        return data.slice(start, end);
-    };
+    const [dataDelet , setDataDelet] = useState()
 
     const showModal = () => {
         setIsModalOpen(true);
@@ -39,6 +29,42 @@ function Group() {
         setIsModalOpen(false);
     };
 
+    const hendelDelet = (id) => {
+        const deleted = window.confirm('do you like');
+    
+        if (deleted) {
+            DeletGroupServisec
+            .remove(id)
+            .then((res) => {
+                setDataDelet(res.data);
+            })
+            .catch((err) => {
+              //TODO
+              console.log(err);
+            });
+        }
+      
+      };
+
+
+
+    // const itemsPerPage = 10;
+    // const [currentPage, setCurrentPage] = useState(0);
+
+    // const pageCount = Math.ceil(data.length / itemsPerPage);
+
+    // const handlePageChange = ({selected}) => {
+    //     setCurrentPage(selected);
+    // };
+
+    // const getCurrentPageData = () => {
+    //     const start = currentPage * itemsPerPage;
+    //     const end = start + itemsPerPage;
+    //     return data.slice(start, end);
+    // };
+
+   
+
     useEffect(() => {
         GetGroupServices
             .getAll()
@@ -49,6 +75,10 @@ function Group() {
                 console.log(err);
             });
     }, []);
+
+
+    
+    
 
     return (
         <>
@@ -64,16 +94,16 @@ function Group() {
                     </thead>
                     <tbody>
                     {
-                        getCurrentPageData.map((e, i) => {
+                        group.map((e, i) => {
                             return (
                                 <tr key={i}>
                                     <td style={{textAlign: 'start'}}>{e.name}</td>
-                                    <td>{e.subject.name}</td>
                                     <td></td>
+                                    <td>{e.subject.name}</td>
                                     <td>
                                         <div className='d-flex align-items-center justify-content-end gap-3'>
                                             <EditGroup/>
-                                            <Button variant="danger" title={<MdDelete size='25px'/>} onClick={showModal}
+                                            <Button variant="danger" title={<MdDelete size='25px'/>} onClick={(e)=> hendelDelet(e.id)}
                                                     className='delet__btn'/>
                                         </div>
                                     </td>
@@ -92,11 +122,11 @@ function Group() {
                        onCancel={handleCancel}>
                     <div className='d-flex justify-content-end gap-4 mt-4'>
                         <Button title='cancel' variant='neutral' onClick={handleCancel}/>
-                        <Button title='delete' variant='danger-delete'/>
+                        <Button title='delete' variant='danger-delete' onClick={(e)=> hendelDelet(e.id)}/>
                     </div>
                 </Modal>
 
-                <ReactPaginate
+                {/* <ReactPaginate
                     previousLabel={'previous'}
                     nextLabel={'next'}
                     breakLabel={'...'}
@@ -107,7 +137,7 @@ function Group() {
                     onPageChange={handlePageChange}
                     containerClassName={'pagination'}
                     activeClassName={'active'}
-                />
+                /> */}
             </div>
         </>
     );
