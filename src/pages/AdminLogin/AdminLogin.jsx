@@ -1,8 +1,8 @@
 import React, {useState, useNavigate} from 'react'
-import { Button, Input } from 'antd'
+import {Button, Input} from 'antd'
 
 import "./AdminLofin.scss"
-import { login } from '../../reducers/actions/auth.js';
+import {login} from '../../reducers/actions/auth.js';
 import Logo from "../../assets/imgs/muazacademy.png"
 import IMg from "../../assets/imgs/muazacademy2.png"
 
@@ -44,14 +44,15 @@ const AdminLogin = () => {
                 <div className='containers'>
                     <div className='choose__stafe'>
                         <div>
-                            <div style={{ marginBottom: "150px" }}>
-                                <img style={{ width: "250px", height: "60px" }} src={Logo} alt={"logo"} />
+                            <div style={{marginBottom: "150px"}}>
+                                <img style={{width: "250px", height: "60px"}} src={Logo} alt={"logo"}/>
                             </div>
 
                             <div className='choose__link-box'>
 
-                                <h2 style={{ fontSize: "40px", marginBottom: "50px" }}>Olg'a admin brat tezro parolni kirit</h2>
-                                <form  action="">
+                                <h2 style={{fontSize: "40px", marginBottom: "50px"}}>Olg'a admin brat tezro parolni
+                                    kirit</h2>
+                                <form action="">
                                     <h2>admin Login</h2>
 
                                     <div className='form__box'>
@@ -62,8 +63,7 @@ const AdminLogin = () => {
                                             // value={values.username}
                                             // onChange={handleInputChange} 
 
-                                            />
-
+                                        />
 
 
                                         <Input.Password
@@ -83,7 +83,7 @@ const AdminLogin = () => {
                         </div>
 
                         <div className='home-img'>
-                            <img className='baner__img' src={IMg} alt={"img"} />
+                            <img className='baner__img' src={IMg} alt={"img"}/>
                         </div>
                     </div>
                 </div>

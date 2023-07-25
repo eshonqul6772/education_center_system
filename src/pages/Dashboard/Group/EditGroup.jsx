@@ -52,6 +52,7 @@ const EditGroup = () => {
             </button>
 
             <Modal width={570} footer={null} title="edit_group" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+
                 <form onSubmit={hendelSubmit} className='form-texnolgy'>
                     <div>
 
@@ -70,7 +71,6 @@ const EditGroup = () => {
                         </div>
                     </div>
                 </form>
-
 
             </Modal>
         </>

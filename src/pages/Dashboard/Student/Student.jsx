@@ -1,16 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { MdDelete, MdModeEdit } from 'react-icons/md';
 import {  Modal } from 'antd';
 
-
+import getStudentsServisec from "../../../services/student.service"
 import Button from '../../../components/Button';
 import AddStudent  from "./AddStudent"
 import './Student.scss';
 
 function Student() {
 
-  const arr = [1,2,3,4,5,6,7,8,9]
-
+  const [student, setStudent] = useState([])
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -22,9 +21,17 @@ function Student() {
     setIsModalOpen(false);
   };
 
-
-
-
+     useEffect(() => {
+      getStudentsServisec
+            .getAll()
+            .then((res) => {
+              setStudent(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, []);
+  
   return (
       <>
         <div className='table__box'>
@@ -41,13 +48,12 @@ function Student() {
               </thead>
 
               <tbody>
-
               {
-                arr.map((e, i)=>{
+                student.map((e, i)=>{
                   return(
                       <tr key={i}>
-                        <td style={{ textAlign: 'start' }}>Eshonqul</td>
-                        <td>Abdulazizov</td>
+                        <td style={{ textAlign: 'start' }}>{e.firstName}</td>
+                        <td>{e.lastName}</td>
                         <td>+998 971674748</td>
                         <td>MTH002</td>
                         <td>

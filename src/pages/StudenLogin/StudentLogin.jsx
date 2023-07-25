@@ -1,17 +1,19 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import {Input } from "antd"
+import { Input } from "antd";
 
-import Logo from '../../assets/imgs/muazacademy.png'
-import Img from "../../assets/imgs/teacher.jpg"
-import "./StudentLogin.scss"
 import { login } from '../../reducers/actions/auth';
+
+import Img from "../../assets/imgs/teacher.jpg";
+import Logo from '../../assets/imgs/muazacademy.png';
+
+import "./StudentLogin.scss";
 
 
 const StudenLogin = () => {
-   const dispatch = useDispatch();
-   const navigate = useNavigate('')
+  const dispatch = useDispatch();
+  const navigate = useNavigate('')
 
 
   const [values, setValues] = useState({
@@ -28,10 +30,7 @@ const StudenLogin = () => {
 
     dispatch(login(values.username, values.password))
       .then((res) => {
-        console.log(res)
-        navigate("/dashbaord")
-
-
+        navigate("/dashbaord");
       })
       .catch((err) => {
         console.log(err);
@@ -41,44 +40,34 @@ const StudenLogin = () => {
 
   return (
     <>
-     <div className='wrapper'>
-      <form  onSubmit={handleSubmit} action="">
+      <div className='wrapper'>
+        <form onSubmit={handleSubmit} action="">
 
-        <div>
-          <img style={{width:"300px", height:"60px"}} src={Logo} alt={"logo"}/>
+          <div>
+            <img style={{ width: "300px", height: "60px" }} src={Logo} alt={"logo"} />
+          </div>
 
-        </div>
-        
-
-
-          <img src={Img} alt='img' style={{width:"350px", height:"230px", borderRadius:"15px"}}/>
+            <img src={Img} alt='img' style={{ width: "350px", height: "230px", borderRadius: "15px" }} />
 
           <div className='form__box'>
+            <Input
+              type='text'
+              name='username'
+              placeholder='login'
+              value={values.username}
+              onChange={handleInputChange} />
 
-          
-              <Input 
-                type='text'
-                name='username'
-                placeholder='login'
-                value={values.username}
-                onChange={handleInputChange} />
-           
-        
-        
-          <Input.Password
-             type='password'
-                name='password'
-                placeholder='Password'
-                value={values.password}
-                onChange={handleInputChange}
-           />
-             
-           
-            </div>
-
-          <button  className='btn__submit' >Login</button>
-      </form>
-     </div>
+            <Input.Password
+              type='password'
+              name='password'
+              placeholder='Password'
+              value={values.password}
+              onChange={handleInputChange}
+            />
+          </div>
+          <button className='btn__submit' >Login</button>
+        </form>
+      </div>
     </>
   )
 }

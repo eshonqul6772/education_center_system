@@ -48,7 +48,7 @@ export const login = (userName, password) => (dispatch) => {
     (data) => {
       dispatch({
         type: LOGIN_SUCCESS,
-        payload: { token: data.token },
+        payload: { token: data.accessToken },
       });
 
       return Promise.resolve();

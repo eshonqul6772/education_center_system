@@ -1,9 +1,9 @@
+ const useAuth = (token) => {
+   if (token) {
+     return true
+   } else {
+     return false;
+   }
+ }
 
-
-export const useAuthe = (token) => {
-  if(!token){
-    return false;
-  }
-
-  return true
-}
+export default useAuth

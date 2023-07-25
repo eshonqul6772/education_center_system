@@ -1,9 +1,20 @@
-import React from 'react'
-import { LiaUserCircleSolid } from "react-icons/lia"
+import React, {useNavigate} from 'react';
+import { LiaUserCircleSolid } from "react-icons/lia";
+
 
 import "./Navbar.scss"
 
 const Navbar = () => {
+
+  const navigate = useNavigate('')
+
+  
+  const logout = () => {
+    localStorage.removeItem('token');
+    navigate('/staff')
+  };
+  
+
   return (
     <div className='navbar'>
 
@@ -11,7 +22,7 @@ const Navbar = () => {
 
         <h2>Category_Title</h2>
 
-        <button className='navbar__btn'><LiaUserCircleSolid size='50px' /></button>
+        <button onClick={logout} className='navbar__btn'><LiaUserCircleSolid size='50px' /></button>
       </div>
 
     </div>

@@ -8,6 +8,4 @@ const getAdress = () => {
   return axios.get(API_URL + '/api/v1/usersme', { headers: authHeader() });
 };
 
-
-
 export default getAdress

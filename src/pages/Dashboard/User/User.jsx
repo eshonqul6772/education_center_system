@@ -22,9 +22,6 @@ function User() {
     setIsModalOpen(false);
   };
 
-  
-
-
   return (
     <>
       <div className='table__box'>
@@ -41,7 +38,6 @@ function User() {
             </thead>
 
             <tbody>
-
             {
                 arr.map((e, i)=>{
                     return(
@@ -64,12 +60,9 @@ function User() {
                     )
                 })
             }
-
             </tbody>
           </table>
-        
         </div>
-    
     <AddUser/>
       </div>
 

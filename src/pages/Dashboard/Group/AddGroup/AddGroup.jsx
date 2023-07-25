@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { Modal } from 'antd';
+import { Modal, Select } from 'antd';
 
 
+import getSubject from "../../../../services/group.service.js"
 import AddGroup from "../../../../services/group.service"
 import Button from "../../../../components/Button"
 import "./AddGroup.scss"
 
 const AddUser = () => {
+
+  const [subject, setSubject] = useState([])
   const [values, setValues] = useState({
-    category: '',
+    name: '',
+    subjectValue: '',
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -29,8 +33,8 @@ const AddUser = () => {
     evt.preventDefault();
 
     const data = {
-      group: values.group,
-     
+      subjext: values.name,
+      values: values.subjectValue
     };
 
     AddGroup.getAll(data)
@@ -41,35 +45,52 @@ const AddUser = () => {
       .catch((err) => {
         console.log(err);
       });
-   
+
   };
+
+  useEffect(() => {
+    getSubject.getSubject().then((res) => {
+      setSubject(res.data)
+    })
+  }, [])
 
   return (
     <>
-    <Button title='add__user' onClick={showModal} variant='primary'/>
-      <Modal width={570} footer={null} title="add__user" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-
-
+      <Button title='add__group' onClick={showModal} variant='primary' />
+      <Modal width={570} footer={null} title="add_group" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
 
         <form onSubmit={hendelSubmit} className='form-texnolgy'>
           <div>
-
             <div className='form__list'>
               <div>
                 <div className='d-flex flex-column mb-3'>
                   <label className='form__category-lable' htmlFor=''>
                     group_name
                   </label>
-                  <input   onChange={(e) => setValues({ ...values, category: e.target.value })} type='text' placeholder='group name' />
+                  <input onChange={(e) => setValues({ ...values, category: e.target.value })} type='text' placeholder='group name' />
                 </div>
 
-                <Button title='add' variant='primary'/>
-              </div>
+                <div className='d-flex flex-column mb-3'>
+                  <label className='form__category-lable' htmlFor=''>
+                    subject
+                  </label>
+                  <Select onSelect={(e) => setValues({ ...values, subjectValue: e})}
+                    
+                    style={{
+                      width: 515,
+                    }}
+                    options={subject.map(item => ({
+                      value: item.id,
+                      label: item.name
+                    }))}
+                  />
+                </div>
 
+                <Button onClick={hendelSubmit} title='add' variant='primary' type='sumit'/>
+              </div>
             </div>
           </div>
         </form>
-
 
       </Modal>
     </>

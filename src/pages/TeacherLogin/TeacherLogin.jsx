@@ -24,7 +24,7 @@ import { login } from '../../reducers/actions/auth';
 
     dispatch(login(values.userName, values.password))
       .then(() => {
-        // navigate("/costumer");
+        
       })
       .catch((err) => {
         console.log(err);
@@ -35,17 +35,15 @@ import { login } from '../../reducers/actions/auth';
     <>
     
      <div className='wrapper'>
-      <form action="">
+      <form onSubmit={handleSubmit} action="">
 
        <div>
          <img  style={{width:"300px", height:"60px"}} src={Logo} alt={"logo"}/>
        </div>
 
-
           <img src={Img} alt='img' style={{width:"350px", height:"230px", borderRadius:"15px"}}/>
 
           <div className='form__box'>
-
            <Input
              type='text'
                 name='userName'
@@ -55,17 +53,12 @@ import { login } from '../../reducers/actions/auth';
            />
 
            <Input.Password
-             
                 name='password'
                 placeholder='Password'
                 value={values.password}
                 onChange={handleInputChange}
            />
-
-              {/* <Input placeholder="login" />
-              <Input.Password placeholder="password" /> */}
           </div>
-
           <button  className='btn__submit' >Login</button>
       </form>
      </div>

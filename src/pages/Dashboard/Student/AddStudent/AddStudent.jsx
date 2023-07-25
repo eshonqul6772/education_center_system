@@ -27,9 +27,7 @@ const AddStudent = () => {
       
      
         <form className='form-texnolgy'>
-          <div>
          
-
             <div className='form__list'>
               <div>
                 <div className='d-flex flex-column mb-3'>
@@ -45,8 +43,6 @@ const AddStudent = () => {
                   </label>
                   <input type='text' placeholder='lastname' />
                 </div>
-
-               
               </div>
 
               <div>
@@ -70,7 +66,7 @@ const AddStudent = () => {
               </div>
              
             </div>
-          </div>
+         
         </form>
     
   
