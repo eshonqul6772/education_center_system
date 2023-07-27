@@ -4,15 +4,15 @@ import { MdDelete, MdModeEdit } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
 
 
-import './Group.scss'
-import GetGroupServices from '../../../services/group.service'
-import Button from '../../../components/Button'
-import AddGroup from './AddGroup'
+import '../Group/Group.scss'
+import getSubject from '../../../services/subject.service'
+import Button from '../../../components/Button/Button'
+import AddSubject from './AddSubject'
 
 function Group() {
   const navigate = useNavigate('')
 
-  const [group, setGroup] = useState([])
+  const [subject, setSubject] = useState([])
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const showModal = () => {
@@ -25,10 +25,22 @@ function Group() {
     setIsModalOpen(false)
   }
 
-  const hendelDelet = (id) => {
-    GetGroupServices.remove(id)
+
+  useEffect(() => {
+    getSubject.getAll()
       .then((res) => {
-        setGroup(group.filter((element) => element.id !== id))
+        setSubject(res.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }, [])
+
+
+  const hendelDelet = (id) => {
+    getSubject.remove(id)
+      .then((res) => {
+        setSubject(subject.filter((element) => element.id !== id))
       })
       .catch((err) => {
         console.log(err)
@@ -37,40 +49,29 @@ function Group() {
   }
 
 
-
-  useEffect(() => {
-    GetGroupServices.getAll()
-      .then((res) => {
-        setGroup(res.data)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }, [])
-
   return (
     <>
       <div className='table__box'>
         <table className='table '>
           <thead className='' style={{ backgroundColor: '#003681', color: 'white' }}>
             <tr className='p-4 table__head'>
-              <th style={{ textAlign: 'start' }}>group_name</th>
+              <th style={{ textAlign: 'start' }}>subject_name</th>
               <th></th>
-              <th>subject_name</th>
+              <th></th>
               <th style={{ textAlign: 'end' }}>operation</th>
             </tr>
           </thead>
           <tbody>
-            {group.map((element, i) => {
+            {subject.map((element, i) => {
               return (
                 <tr key={i}>
                   <td style={{ textAlign: 'start' }}>{element.name}</td>
                   <td></td>
-                  <td>{element.subject.name}</td>
+                  <td></td>
                   <td>
                     <div className='d-flex align-items-center justify-content-end gap-3'>
                       <button
-                        onClick={() => navigate(`/group/${element.id}`)}
+                        // onClick={() => navigate(`/group/${element.id}`)}
                         className='edit__btn'
                       >
                         <MdModeEdit />
@@ -107,7 +108,7 @@ function Group() {
         </table>
 
         <div>
-          <AddGroup />
+          <AddSubject/>
         </div>
       </div>
     </>

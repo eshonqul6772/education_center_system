@@ -1,4 +1,4 @@
-import React, {useNavigate} from 'react';
+import { useNavigate } from "react-router-dom";
 import { LiaUserCircleSolid } from "react-icons/lia";
 
 

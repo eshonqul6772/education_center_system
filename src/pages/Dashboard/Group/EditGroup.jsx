@@ -1,130 +1,135 @@
-import React, { useState , useEffect} from 'react';
-import { MdModeEdit } from "react-icons/md";
-import { Modal, Select } from 'antd';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import { useParams, useNavigate } from 'react-router-dom'
+import { Select } from 'antd'
 
-import getSubject from "../../../services/group.service.js"
-import EditGroupServisec from "../../../services/group.service"
-import Button from "../../../components/Button"
+import authHeader from '../../../services/auth-header.js'
+import getSubject from '../../../services/group.service.js'
+import Button from '../../../components/Button'
 
-const { Option, OptGroup } = Select;
+const { Option, OptGroup } = Select
 
 const EditGroup = () => {
-
-
+  const navigate = useNavigate('')
+  const { id } = useParams()
   const [subject, setSubject] = useState([])
+
   const [values, setValues] = useState({
     name: '',
     subjectValue: '',
-    status: ''
-  });
+    status: '',
+  })
 
-
-  function handleChange(value) {
-    console.log(`selected ${value}`);
+  const fetchGroup = () => {
+    axios
+      .get(`http://localhost:8080/api/v1/groups/${id}`, {
+        headers: { 
+          Authorization: `Bearer ${localStorage.getItem('access')}`,
+        }})
+      .then((res) => {
+        console.log(res)
+        const { name, subjectValue, status } = res.data
+        const findUser = {
+          name,
+          subjectValue,
+          status,
+        }
+        setValues(findUser)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
 
+  console.log(values)
+
+
+  useEffect(() => {
+    fetchGroup()
+  }, []);
+
+  function handleChange(value) {
+    console.log(`selected ${value}`)
+  }
+
+
   
-   
-    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const showModal = () => {
-        setIsModalOpen(true);
-    };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const handleOk = () => {
-        setIsModalOpen(false);
-    };
-
-    const handleCancel = () => {
-        setIsModalOpen(false);
-    };
-
-
-    const hendelSubmit = (evt) => {
-        evt.preventDefault();
-
-        const data = {
-            name: values.name,
-            subject_id: values.subjectValue,
-            status: values.status
-          };
-
-          EditGroupServisec.ubdate(data)
-            .then((res) => {
-                alert('add category');
-                console.log(res)
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-
-    };
-
-    useEffect(() => {
-        getSubject.getSubject().then((res) => {
-          setSubject(res.data)
+   axios.put('http://localhost:8080/api/v1/groups/' + id,  {
+    headers: { 
+      Authorization: `Bearer ${localStorage.getItem('access')}`,
+    }} )
+       .then((e) => {
+            console.log(e.data)
+        }).catch((e) => {
+          console.log(e)
         })
-      }, [])
+  };
 
-    return (
-        <>
-            <button onClick={showModal} className='edit__btn'>
-                <MdModeEdit />
-            </button>
-          
-      <Modal width={570} footer={null} title="add_group" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+  useEffect(() => {
+    getSubject.getSubject().then((res) => {
+      setSubject(res.data)
+    })
+  }, [])
 
-        <form onSubmit={hendelSubmit} className='form-texnolgy'>
-          <div>
-            <div className='form__list'>
-              <div>
-                <div className='d-flex flex-column mb-3'>
-                  <label className='form__category-lable' htmlFor=''>
-                    group_name
-                  </label>
-                  <input onChange={(e) => setValues({ ...values, name: e.target.value })} type='text' placeholder='group name' />
-                </div>
-
-                <div className='d-flex flex-column mb-3'>
-                  <label className='form__category-lable' htmlFor=''>
-                    subject
-                  </label>
-                  <Select onSelect={(e) => setValues({ ...values, setSubject: e })}
-
-                    style={{
-                      width: 515,
-                    }}
-                    options={subject.map(item => ({
-                      value: item.id,
-                      label: item.name
-                    }))}
-                  />
-
-                  <Select  className='mt-4'
-                  onSelect={(e) => setValues({ ...values, status:e })}
-                    defaultValue="ACTIVE"
-                    style={{ width: 515 }}
-                    onChange={handleChange}
-                  >
-                    <OptGroup label="status">
-                      <Option value="ACTIVE">ACTIVE</Option>
-                      <Option value="NOACTIVE">NO_ACTIVE</Option>
-                    </OptGroup>
-                  </Select>
-                </div>
-
-                <Button onClick={hendelSubmit} title='add' variant='primary' type='sumit' />
+  return (
+    <>
+      <form onSubmit={handleSubmit} className='form-texnolgy'>
+        <div>
+          <div className='form__list'>
+            <div>
+              <div className='d-flex flex-column mb-3'>
+                <label className='form__category-lable' htmlFor=''>
+                  group_name
+                </label>
+                <input
+                  onChange={(e) => setValues({ ...values, name: e.target.value })}
+                  type='text'
+                  placeholder='group name'
+                  defaultValue={values.name}
+                />
               </div>
+
+              <div className='d-flex flex-column mb-3'>
+                <label className='form__category-lable' htmlFor=''>
+                  subject
+                </label>
+                <Select
+                  onSelect={(e) => setValues({ ...values, setSubject: e })}
+                  style={{
+                    width: 515,
+                  }}
+                  defaultValue={subject.name}
+                  options={subject.map((item) => ({
+                    value: item.id,
+                    label: item.name,
+                  }))}
+                />
+
+                <Select
+                  className='mt-4'
+                  onSelect={(e) => setValues({ ...values, status: e })}
+                  defaultValue='ACTIVE'
+                  style={{ width: 515 }}
+                  onChange={handleChange}
+                >
+                  <OptGroup label='status'>
+                    <Option value='ACTIVE'>ACTIVE</Option>
+                    <Option value='NOACTIVE'>NO_ACTIVE</Option>
+                  </OptGroup>
+                </Select>
+              </div>
+
+              <Button   title='edit' variant='primary' type='sumit' />
             </div>
           </div>
-        </form>
+        </div>
+      </form>
+    </>
+  )
+}
 
-      </Modal>
-        </>
-    );
-};
-
-
-export default EditGroup;
-
-
+export default EditGroup

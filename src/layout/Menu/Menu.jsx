@@ -1,9 +1,8 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { FaUserAlt } from 'react-icons/fa';
 import {AiOutlineTeam} from "react-icons/ai"
 import {PiStudentBold} from "react-icons/pi"
-import {MdGroups2} from "react-icons/md"
+import {MdGroups2,MdOutlineSubject} from "react-icons/md"
 import {LiaUserCircleSolid} from "react-icons/lia"
 
 import './Menu.scss';
@@ -56,6 +55,14 @@ function Menu() {
           </NavLink>
         </li>
 
+        <li className='menu__list-item'>
+          <NavLink
+            className={({ isActive }) => (isActive ? 'menu__link active' : 'menu__link')}
+            to='/subject'
+          >
+            <MdOutlineSubject size='40px' />  Subject
+          </NavLink>
+        </li>
 
        
        

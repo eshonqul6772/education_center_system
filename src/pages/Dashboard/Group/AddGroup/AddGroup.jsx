@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Modal, Select } from 'antd';
 
 
-import getSubject from "../../../../services/group.service.js"
-import AddGroup from "../../../../services/group.service"
-import Button from "../../../../components/Button"
-import "./AddGroup.scss"
-
+import getSubject from '../../../../services/group.service.js'
+import AddGroup from '../../../../services/group.service'
+import Button from '../../../../components/Button'
+import './AddGroup.scss'
 const { Option, OptGroup } = Select;
 
 const AddUser = () => {
@@ -41,7 +40,6 @@ const AddUser = () => {
 
 
   const hendelSubmit = (evt) => {
-    evt.preventDefault();
 
     const data = {
       name: values.name,
@@ -51,12 +49,13 @@ const AddUser = () => {
 
     AddGroup.addUser(data)
       .then((res) => {
-        alert('add category');
         console.log(res)
       })
       .catch((err) => {
         console.log(err);
       });
+
+      handleCancel()
 
   };
 
@@ -99,7 +98,7 @@ const AddUser = () => {
 
                   <Select  className='mt-4'
                   onSelect={(e) => setValues({ ...values, status:e })}
-                    defaultValue="ACTIVE"
+                    value="ACTIVE"
                     style={{ width: 515 }}
                     onChange={handleChange}
                   >
