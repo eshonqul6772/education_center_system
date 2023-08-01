@@ -24,7 +24,7 @@ const EditGroup = () => {
     axios
       .get(`http://localhost:8080/api/v1/groups/${id}`, {
         headers: { 
-          Authorization: `Bearer ${localStorage.getItem('access')}`,
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         }})
       .then((res) => {
         console.log(res)
@@ -60,7 +60,7 @@ const EditGroup = () => {
 
    axios.put('http://localhost:8080/api/v1/groups/' + id,  {
     headers: { 
-      Authorization: `Bearer ${localStorage.getItem('access')}`,
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
     }} )
        .then((e) => {
             console.log(e.data)

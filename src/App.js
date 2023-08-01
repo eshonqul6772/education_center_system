@@ -1,5 +1,6 @@
-import { Route, Routes } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import {Route, Routes} from 'react-router-dom'
+
+import {useSelector} from 'react-redux'
 
 import Navbar from './layout/Navbar'
 import Menu from './layout/Menu'
@@ -14,43 +15,48 @@ import User from './pages/Dashboard/User'
 import Student from './pages/Dashboard/Student'
 import EditGroup from './pages/Dashboard/Group/EditGroup'
 import Subject from './pages/Dashboard/Subject'
+import EditSubject from './pages/Dashboard/Subject/EditSubject'
+import ErrorPage from './components/ErrorPage/ErrorPage';
 
 function App() {
-  const { isLoggedIn } = useSelector((state) => state.auth)
+    const {isLoggedIn} = useSelector((state) => state.auth)
 
-  if (!isLoggedIn) {
-    return (
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route exact path='/studentlogin' element={<StudentLogin />} />
-        <Route path='/staff' element={<Staff />} />
-        <Route path='/admin' element={<AdminLogin />} />
-        <Route path='/teacher' element={<TeacherLogin />} />
-      </Routes>
-    )
-  }
-  return (
-    <>
-      <div className='dashboard'>
-        <div style={{ width: '18%' }}>
-          <Menu />
-        </div>
-        <div style={{ width: '82%' }}>
-          <Navbar />
-          <div className='dashbaord-content'>
+    if (!isLoggedIn) {
+        return (
             <Routes>
-              <Route path='/group' element={<Group />} />
-              <Route path='/group/:id' element={<EditGroup />} />
-              <Route path='/team' element={<Team />} />
-              <Route path='/user' element={<User />} />
-              <Route path='/student' element={<Student />} />
-              <Route path='/subject' element = {<Subject/>}/>
+                <Route path="/" element={<Home/>}/>
+                <Route exact path="/studentlogin" element={<StudentLogin/>}/>
+                <Route path="/staff" element={<Staff/>}/>
+                <Route path="/admin" element={<AdminLogin/>}/>
+                <Route path="/teacher" element={<TeacherLogin/>}/>
             </Routes>
-          </div>
-        </div>
-      </div>
-    </>
-  )
+        )
+    }
+    return (
+        <>
+            <div className="dashboard">
+                <div style={{width: '18%'}}>
+                    <Menu/>
+                </div>
+                : <div style={{width: '82%'}}>
+                <Navbar/>
+                <div className="dashbaord-content">
+                    <Routes>
+                        <Route path="*" element={<ErrorPage/>}/>
+                        <Route path="/group" element={<Group/>}/>
+                        <Route path="/group/:id" element={<EditGroup/>}/>
+                        <Route path="/team" element={<Team/>}/>
+                        <Route path="/user" element={<User/>}/>
+                        <Route path="/student" element={<Student/>}/>
+                        <Route path="/subject" element={<Subject/>}/>
+                        <Route path="/subject/:id" element={<EditSubject/>}/>
+                    </Routes>
+                </div>
+            </div>
+
+            </div>
+        </>
+    )
 }
 
 export default App

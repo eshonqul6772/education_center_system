@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { Modal } from 'antd'
 
-import AddSubjectServisece from '../../../services/subject.service'
+import AddSubject from '../../../services/team.service'
 import Button from '../../../components/Button'
 import '../Group/Group.scss'
 
-const AddSubject = () => {
+const AddTeam = () => {
   const [values, setValues] = useState({
-    subject: '',
+    team: '',
   })
 
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -26,13 +26,13 @@ const AddSubject = () => {
 
   const hendelSubmit = (evt) => {
     const data = {
-      name: values.subject,
+      name: values.team,
       status: 'ACTIVE',
     }
 
     console.log(data)
 
-    AddSubjectServisece.addSubject(data)
+    AddSubject.getAll(data)
       .then((res) => {
         console.log(res)
       })
@@ -44,11 +44,11 @@ const AddSubject = () => {
 
   return (
     <>
-      <Button title='add_subject' onClick={showModal} variant='primary' />
+      <Button title='add_team' onClick={showModal} variant='primary' />
       <Modal
         width={570}
         footer={null}
-        title='add_subject'
+        title='add_team'
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
@@ -64,10 +64,10 @@ const AddSubject = () => {
                   <input
                     onChange={(e) => setValues({ ...values, subject: e.target.value })}
                     type='text'
-                    placeholder='subject name'
+                    placeholder='group name'
                   />
                 </div>
-                <Button title='add' variant='primary' type='sumit' />
+                <Button title='add_team' variant='primary' type='sumit' />
               </div>
             </div>
           </div>
@@ -76,4 +76,4 @@ const AddSubject = () => {
     </>
   )
 }
-export default AddSubject;
+export default AddTeam

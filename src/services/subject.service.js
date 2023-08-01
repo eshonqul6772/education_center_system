@@ -16,9 +16,19 @@ const addSubject = (data) => {
     return axios.delete(API_URL + '/api/v1/subjects/' + id, { headers: authHeader() })
   }
 
+  const ubdate = (id) => {
+    return axios.get(API_URL + `/api/v1/subjects/`+id, { headers: authHeader() })
+  }
+
+
+  const getUserid = (id) => {
+    return axios.put(API_URL + '/api/v1/subjects/'+ id, { headers: authHeader() })
+  }
 
 export default {
     getAll,
     addSubject,
     remove,
+    getUserid,
+    ubdate,
 }

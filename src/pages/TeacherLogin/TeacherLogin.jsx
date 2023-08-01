@@ -7,7 +7,7 @@ import Img from "../../assets/imgs/teacher.jpg"
 
 import { login } from '../../reducers/actions/auth';
 
- const StudenLogin = () => {
+ const TeacherLogin = () => {
 
   const dispatch = useDispatch();
   const [values, setValues] = useState({
@@ -66,4 +66,4 @@ import { login } from '../../reducers/actions/auth';
   )
 }
 
-export default StudenLogin
+export default TeacherLogin
