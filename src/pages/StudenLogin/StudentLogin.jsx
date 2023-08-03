@@ -4,17 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import { Input } from "antd";
 
 import { login } from '../../reducers/actions/auth';
-
 import Img from "../../assets/imgs/teacher.jpg";
 import Logo from '../../assets/imgs/muazacademy.png';
-
 import "./StudentLogin.scss";
 
 
 const StudenLogin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate('')
-
 
   const [values, setValues] = useState({
     username: '',

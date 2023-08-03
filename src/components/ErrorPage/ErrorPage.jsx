@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 const ErrorPage = () => {
     return (
         <div>
-            <h2>NOT FOUNT PAGE 404?</h2>
+            <h2>XUSH KELIPSIZ BRATAN</h2>
             <Link>back to</Link>
         </div>
     )

@@ -13,8 +13,6 @@ function Menu() {
     <div className='menu'>
       <ul className='menu__list'>
 
-      
-
         <li className='menu__list-item'>
           <Link className='menu__logo border-bottom border-dark' to='/'>
             <img src={Logo} alt={Logo} style={{width:"150px", height:"50px"}}/>
@@ -63,8 +61,6 @@ function Menu() {
             <MdOutlineSubject size='40px' />  Subject
           </NavLink>
         </li>
-
-       
        
       </ul>
     </div>

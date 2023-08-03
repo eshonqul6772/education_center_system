@@ -3,6 +3,16 @@
   border: 10px;
   border: none;
   width: 100%;
+  color: white;
+  padding: 7px;
+  border-radius: 5px;
+  border: 1px solid black;
+
+  &:hover{
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+  }
 }
 
 .form__box {

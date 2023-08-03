@@ -23,18 +23,6 @@ const Navbar = () => {
 
         <h2>Category_Title</h2>
 
-        <Select
-          defaultValue="lucy"
-          style={{
-            width: 120, }}
-          options={[
-            {
-              value: 'lucy',
-              label: 'Lucy',
-            },
-          ]}
-        />
-
         <button onClick={logout} className='navbar__btn'><LiaUserCircleSolid size='50px' /></button>
       </div>
 

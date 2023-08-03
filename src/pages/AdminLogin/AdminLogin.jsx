@@ -1,36 +1,39 @@
-import React from 'react'
-import {Button, Input} from 'antd'
+import React,  {useState}  from 'react'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { Input} from 'antd'
 
-import './AdminLofin.scss'
+import { login } from 'reducers/actions/auth'
 import Logo from '../../assets/imgs/muazacademy.png'
 import IMg from '../../assets/imgs/muazacademy2.png'
+import './AdminLofin.scss'
+
 
 const AdminLogin = () => {
-    // const dispatch = useDispatch();
-    // const navigate = useNavigate('')
-
-    // const [values, setValues] = useState({
-    //     username: '',
-    //     password: '',
-    // });
-
-    // const handleInputChange = (e) => {
-    //     setValues({ ...values, [e.target.name]: e.target.value });
-    // };
-
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-
-    //     (login(values.username, values.password))
-    //         .then((res) => {
-    //             console.log(res)
-    //             navigate("/dashbaord")
-
-    //         })
-    //         .catch((err) => {
-    //             console.log(err);
-    //         });
-    // };
+    const dispatch = useDispatch();
+    const navigate = useNavigate('')
+  
+  
+    const [values, setValues] = useState({
+      username: '',
+      password: '',
+    });
+  
+    const handleInputChange = (e) => {
+      setValues({ ...values, [e.target.name]: e.target.value });
+    };
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+  
+      dispatch(login(values.username, values.password))
+        .then((res) => {
+          navigate("/dashbaord");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
 
     return (
         <>
@@ -44,7 +47,7 @@ const AdminLogin = () => {
 
                             <div className="choose__link-box">
                                 <h2 style={{marginBottom: '20px', color: 'black'}}>ADMIN</h2>
-                                <form action="">
+                                <form onSubmit={handleSubmit} action="">
                                     <h3 style={{fontSize: '20px', marginBottom: '20px', color: 'black'}}>
                                         Enter your credentials to login
                                     </h3>
@@ -54,22 +57,22 @@ const AdminLogin = () => {
                                             type="text"
                                             name="username"
                                             placeholder="login"
-                                            // value={values.username}
-                                            // onChange={handleInputChange}
+                                            value={values.username}
+                                            onChange={handleInputChange}
                                         />
 
                                         <Input.Password
                                             type="password"
                                             name="password"
                                             placeholder="Password"
-                                            // value={values.password}
-                                            // onChange={handleInputChange}
+                                            value={values.password}
+                                            onChange={handleInputChange}
                                         />
                                     </div>
 
-                                    <Button className="btn__submit" type="primary">
+                                    <button className="btn__submit" type="submit">
                                         login
-                                    </Button>
+                                    </button>
                                 </form>
                             </div>
                         </div>

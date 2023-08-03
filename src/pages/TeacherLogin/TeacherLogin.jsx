@@ -4,7 +4,6 @@ import { Input } from 'antd';
 
 import Logo from '../../assets/imgs/muazacademy.png'
 import Img from "../../assets/imgs/teacher.jpg"
-
 import { login } from '../../reducers/actions/auth';
 
  const TeacherLogin = () => {

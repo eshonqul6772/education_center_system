@@ -23,13 +23,9 @@ const AddUser = () => {
   return (
     <> <Button title='add__user' onClick={showModal} variant='primary'/>
       <Modal width={570} footer={null} title="add__user" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-    
-      
      
         <form className='form-texnolgy'>
           <div>
-         
-
             <div className='form__list'>
               <div>
                 <div className='d-flex flex-column mb-3'>
@@ -45,8 +41,6 @@ const AddUser = () => {
                   </label>
                   <input type='text' placeholder='lastname' />
                 </div>
-
-               
               </div>
 
               <div>
@@ -72,7 +66,6 @@ const AddUser = () => {
             </div>
           </div>
         </form>
-    
   
       </Modal>
   </>
