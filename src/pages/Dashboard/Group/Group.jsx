@@ -48,6 +48,8 @@ function Group() {
       })
   }, [])
 
+  console.log(group)
+
 
   return (
     <>
