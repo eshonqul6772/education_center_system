@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Modal } from 'antd'
 
-import AddSubject from '../../../services/team.service'
-import Button from '../../../components/Button'
+import AddSubject from 'services/team.service'
+import Button from 'components/Button'
 import '../Group/Group.scss'
 
 const AddTeam = () => {

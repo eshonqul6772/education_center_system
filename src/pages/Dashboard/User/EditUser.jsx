@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 
-import ServiseUser from '../../../services/subject.service.js'
+import ServiseUser from 'services/subject.service.js'
 
-import Button from '../../../components/Button'
+import Button from 'components/Button'
 
 
 const EditSubject = () => {

@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { Modal, Select } from 'antd'
-import getSubject from '../../../../services/group.service.js'
-import AddGroup from '../../../../services/group.service'
-import Button from '../../../../components/Button'
+
+
+import getSubject from 'services/group.service.js'
+import AddGroup from 'services/group.service'
+import Button from 'components/Button'
 import './AddGroup.scss'
 
 const options = []
 
-const handleChange = (value) => {
-  console.log(`selected ${value}`)
-}
+
 const AddUser = () => {
   const [subject, setSubject] = useState([])
   const [values, setValues] = useState({

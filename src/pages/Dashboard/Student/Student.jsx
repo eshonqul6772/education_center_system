@@ -2,8 +2,8 @@
 import {MdDelete, MdModeEdit} from 'react-icons/md';
 import {Modal} from 'antd';
 
-import getStudentsServisec from "../../../services/student.service"
-import Button from '../../../components/Button';
+import getStudentsServisec from "services/student.service"
+import Button from 'components/Button';
 import AddStudent from "./AddStudent"
 import './Student.scss';
 

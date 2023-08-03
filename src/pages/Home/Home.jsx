@@ -3,8 +3,8 @@ import {PiStudentBold} from "react-icons/pi"
 import {AiOutlineTeam} from "react-icons/ai"
 
 import "./Home.scss"
-import IMg from "../../assets/imgs/muazacademy2.png"
-import Logo from "../../assets/imgs/muazacademy.png"
+import IMg from "assets/imgs/muazacademy2.png"
+import Logo from "assets/imgs/muazacademy.png"
 
 const Home = () => {
   return (

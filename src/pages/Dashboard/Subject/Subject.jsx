@@ -4,8 +4,8 @@ import { Modal, Table } from 'antd'
 import { MdDelete, MdModeEdit } from 'react-icons/md'
 
 
-import Button from '../../../components/Button/Button'
-import getSubject from '../../../services/subject.service'
+import Button from 'components/Button/Button'
+import getSubject from 'services/subject.service'
 import AddSubject from './AddSubject'
 import '../Group/Group.scss'
 

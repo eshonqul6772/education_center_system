@@ -2,18 +2,19 @@ import axios from 'axios'
 
 import authHeader from './auth-header.js'
 
-const API_URL = 'http://localhost:8080'
+
+const API_URL = process.env.REACT_APP_MY_VARIABLE;
 
 const getAll = () => {
-  return axios.get(API_URL + '/api/v1/students/list', { headers: authHeader() })
+  return axios.get(API_URL + '/students/list', { headers: authHeader() })
 }
 
 const addStudent = (data) => {
-  return axios.post(API_URL + '/api/v1/students', data, { headers: authHeader() })
+  return axios.post(API_URL + '/students', data, { headers: authHeader() })
 }
 
 const remove = (id) => {
-  return axios.delete(API_URL + '/api/v1/students' + id, { headers: authHeader() })
+  return axios.delete(API_URL + '/students' + id, { headers: authHeader() })
 }
 
 export default {

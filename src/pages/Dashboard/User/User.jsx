@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { MdDelete, MdModeEdit } from 'react-icons/md';
 import { Modal, Table } from 'antd';
 
-import UserServices from "../../../services/user.service"
+import UserServices from "services/user.service"
 import Columns from "./DataHeader.js"
-import Button from '../../../components/Button';
-import AddUser from "../../../components/AddUser"
+import Button from 'components/Button';
+import AddUser from "components/AddUser"
 import './User.scss';
 
 function User() {

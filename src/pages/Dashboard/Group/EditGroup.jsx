@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Select } from 'antd'
 
-import authHeader from '../../../services/auth-header.js'
-import getSubject from '../../../services/group.service.js'
-import Button from '../../../components/Button'
+
+import getSubject from 'services/group.service.js'
+import Button from 'components/Button'
 
 const { Option, OptGroup } = Select
 
 const EditGroup = () => {
-  const navigate = useNavigate('')
   const { id } = useParams()
   const [subject, setSubject] = useState([])
 

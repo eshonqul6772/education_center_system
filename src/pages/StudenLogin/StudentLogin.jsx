@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Input } from "antd";
 
-import { login } from '../../reducers/actions/auth';
-import Img from "../../assets/imgs/teacher.jpg";
-import Logo from '../../assets/imgs/muazacademy.png';
+import { login } from 'reducers/actions/auth';
+import Img from "assets/imgs/teacher.jpg";
+import Logo from 'assets/imgs/muazacademy.png';
 import "./StudentLogin.scss";
 
 

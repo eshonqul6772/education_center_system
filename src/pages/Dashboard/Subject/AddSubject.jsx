@@ -1,79 +1,81 @@
-import React, { useState } from 'react'
-import { Modal } from 'antd'
+import React, { useState } from "react";
+import { Modal } from "antd";
 
-import AddSubjectServisece from '../../../services/subject.service'
-import Button from '../../../components/Button'
-import '../Group/Group.scss'
+import AddSubjectServisece from "services/subject.service";
+import Button from "components/Button";
+import "../Group/Group.scss";
 
 const AddSubject = () => {
   const [values, setValues] = useState({
-    subject: '',
-  })
+    subject: "",
+  });
 
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
-    setIsModalOpen(true)
-  }
+    setIsModalOpen(true);
+  };
 
   const handleOk = () => {
-    setIsModalOpen(false)
-  }
+    setIsModalOpen(false);
+  };
 
   const handleCancel = () => {
-    setIsModalOpen(false)
-  }
+    setIsModalOpen(false);
+  };
 
   const hendelSubmit = (evt) => {
     const data = {
       name: values.subject,
-      status: 'ACTIVE',
-    }
+      status: "ACTIVE",
+    };
 
-    console.log(data)
+    console.log(data);
 
     AddSubjectServisece.addSubject(data)
       .then((res) => {
-        console.log(res)
+        console.log(res);
       })
       .catch((err) => {
-        console.log(err)
-      })
-    handleCancel()
-  }
+        console.log(err);
+      });
+    handleCancel();
+  };
 
   return (
     <>
-      <Button title='add_subject' onClick={showModal} variant='primary' />
+      <Button title="add_subject" onClick={showModal} variant="primary" />
       <Modal
         width={570}
         footer={null}
-        title='add_subject'
+        title="add_subject"
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <form onSubmit={hendelSubmit} className='form-texnolgy'>
+        <form onSubmit={hendelSubmit} className="form-texnolgy">
           <div>
-            <div className='form__list'>
+            <div className="form__list">
               <div>
-                <div className='d-flex flex-column mb-3'>
-                  <label className='form__category-lable' htmlFor=''>
+                <div className="d-flex flex-column mb-3">
+                  <label className="form__category-lable" htmlFor="">
                     subject_name
                   </label>
                   <input
-                    onChange={(e) => setValues({ ...values, subject: e.target.value })}
-                    type='text'
-                    placeholder='subject name'
+                    onChange={(e) =>
+                      setValues({ ...values, subject: e.target.value })
+                    }
+                    type="text"
+                    placeholder="subject name"
                   />
                 </div>
-                <Button title='add' variant='primary' type='sumit' />
+                <Button title="add" variant="primary" type="sumit" />
               </div>
             </div>
           </div>
         </form>
       </Modal>
     </>
-  )
-}
+  );
+};
 export default AddSubject;

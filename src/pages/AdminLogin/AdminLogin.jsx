@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import { Input} from 'antd'
 
 import { login } from 'reducers/actions/auth'
-import Logo from '../../assets/imgs/muazacademy.png'
-import IMg from '../../assets/imgs/muazacademy2.png'
+import Logo from 'assets/imgs/muazacademy.png'
+import IMg from 'assets/imgs/muazacademy2.png'
 import './AdminLofin.scss'
 
 

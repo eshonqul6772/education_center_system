@@ -4,8 +4,8 @@ import {PiStudentBold} from 'react-icons/pi'
 import {AiOutlineTeam} from 'react-icons/ai'
 import {BiSupport} from 'react-icons/bi'
 
-import Logo from '../../assets/imgs/muazacademy.png'
-import IMg from '../../assets/imgs/muazacademy2.png'
+import Logo from 'assets/imgs/muazacademy.png'
+import IMg from 'assets/imgs/muazacademy2.png'
 import './Staf.scss'
 
 const Staf = () => {
