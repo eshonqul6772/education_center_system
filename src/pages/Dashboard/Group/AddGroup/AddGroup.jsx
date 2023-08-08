@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Modal, Select } from 'antd'
 
 
-import getSubject from 'services/group.service.js'
-import AddGroup from 'services/group.service'
+import GroupServices from 'services/group.service.js'
+import getSubject from 'services/subject.service'
 import Button from 'components/Button'
 import './AddGroup.scss'
 
@@ -15,7 +15,7 @@ const AddUser = () => {
   const [values, setValues] = useState({
     name: '',
     subjectValue: '',
-    status: '',
+    status: 'ACTIVE',
   })
 
   function handleChange(value) {
@@ -37,13 +37,16 @@ const AddUser = () => {
   }
 
   const hendelSubmit = (evt) => {
+
+    evt.preventDefault()
+
     const data = {
       name: values.name,
       subject_id: values.subjectValue,
       status: values.status,
     }
 
-    AddGroup.addUser(data)
+    GroupServices.addGroup(data)
       .then((res) => {
         console.log(res)
       })
@@ -55,10 +58,11 @@ const AddUser = () => {
   }
 
   useEffect(() => {
-    getSubject.getSubject().then((res) => {
+    getSubject.getAll().then((res) => {
       setSubject(res.data)
     })
   }, [])
+
 
   return (
     <>

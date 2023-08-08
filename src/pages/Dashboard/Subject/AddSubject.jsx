@@ -25,6 +25,9 @@ const AddSubject = () => {
   };
 
   const hendelSubmit = (evt) => {
+
+    evt.preventDefault();
+    
     const data = {
       name: values.subject,
       status: "ACTIVE",
@@ -39,7 +42,11 @@ const AddSubject = () => {
       .catch((err) => {
         console.log(err);
       });
-    handleCancel();
+
+
+   
+      
+      handleCancel()
   };
 
   return (

@@ -1,4 +1,4 @@
- import {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {MdDelete, MdModeEdit} from 'react-icons/md';
 import {Modal} from 'antd';
 

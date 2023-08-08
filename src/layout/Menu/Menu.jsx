@@ -1,67 +1,37 @@
-import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import {AiOutlineTeam} from "react-icons/ai"
-import {PiStudentBold} from "react-icons/pi"
-import {MdGroups2,MdOutlineSubject} from "react-icons/md"
-import {LiaUserCircleSolid} from "react-icons/lia"
+import React from "react";
+import { NavLink, Link } from "react-router-dom";
 
-import './Menu.scss';
-import Logo from '../../assets/imgs/muazacademy.png';
+
+import PathName from "./PathName.js";
+import "./Menu.scss";
+import Logo from "../../assets/imgs/muazacademy.png";
 
 function Menu() {
   return (
-    <div className='menu'>
-      <ul className='menu__list'>
-
-        <li className='menu__list-item'>
-          <Link className='menu__logo border-bottom border-dark' to='/'>
-            <img src={Logo} alt={Logo} style={{width:"150px", height:"50px"}}/>
+    <div className="menu">
+      <ul className="menu__list">
+        <div className="menu__list-logo">
+          <Link
+            className="menu__logo border-bottom border-dark"
+            to="/dashboard/"
+          >
+            <img
+              src={Logo}
+              alt={Logo}
+              style={{ width: "150px", height: "50px" }}
+            />
           </Link>
-        </li>
+        </div>
 
-        <li className='menu__list-item'>
-          <NavLink
-            className={({ isActive }) => (isActive ? 'menu__link active' : 'menu__link')}
-            to='/user'
-          >
-            <LiaUserCircleSolid size='40px' />  Users
-          </NavLink>
-        </li>
-        
-        <li className='menu__list-item'>
-          <NavLink className='menu__link' to='/team'>
-            <AiOutlineTeam size="40px"/> Teacher
-          </NavLink>
-        </li>
-
-        <li className='menu__list-item'>
-          <NavLink
-            className={({ isActive }) => (isActive ? 'menu__link active' : 'menu__link')}
-            to='/group'
-          >
-            <MdGroups2 size='40px' />  Group
-          </NavLink>
-        </li>
-
-
-        <li className='menu__list-item'>
-          <NavLink
-            className={({ isActive }) => (isActive ? 'menu__link active' : 'menu__link')}
-            to='/student'
-          >
-            <PiStudentBold size='40px' />  Student
-          </NavLink>
-        </li>
-
-        <li className='menu__list-item'>
-          <NavLink
-            className={({ isActive }) => (isActive ? 'menu__link active' : 'menu__link')}
-            to='/subject'
-          >
-            <MdOutlineSubject size='40px' />  Subject
-          </NavLink>
-        </li>
-       
+        {PathName.map((e, id) => {
+          return (
+            <li className="menu__list-item" key={id}>
+              <NavLink to={e.path} className="menu__link">
+               {e.title}
+              </NavLink>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

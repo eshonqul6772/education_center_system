@@ -1,14 +1,13 @@
 import React from 'react';
 
-function Dashboard () {
+import Loader from 'components/Loader';
 
+function Dashboard () {
+    
     return (
         <>
-                <div>
-
-              
-                </div>
-
+                
+            <Loader />
         </>
     );
 }

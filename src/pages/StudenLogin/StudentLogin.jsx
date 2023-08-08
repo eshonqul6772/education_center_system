@@ -1,21 +1,23 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Input } from "antd";
+import toast, { Toaster } from "react-hot-toast";
 
-import { login } from 'reducers/actions/auth';
+import { login } from "reducers/actions/auth";
 import Img from "assets/imgs/teacher.jpg";
-import Logo from 'assets/imgs/muazacademy.png';
+import Logo from "assets/imgs/muazacademy.png";
 import "./StudentLogin.scss";
+
 
 
 const StudenLogin = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate('')
+  const navigate = useNavigate("");
 
   const [values, setValues] = useState({
-    username: '',
-    password: '',
+    username: "",
+    password: "",
   });
 
   const handleInputChange = (e) => {
@@ -27,46 +29,57 @@ const StudenLogin = () => {
 
     dispatch(login(values.username, values.password))
       .then((res) => {
-        navigate("/dashbaord");
+        navigate("/user");
+        toast.success(res.message); 
       })
       .catch((err) => {
+        toast.success(err.message); 
         console.log(err);
       });
   };
 
-
   return (
     <>
-      <div className='wrapper'>
-        <form onSubmit={handleSubmit} action="">
+      <div className="wrapper">
+        <Toaster position="top-center" reverseOrder={true} />
 
+        <form onSubmit={handleSubmit} action="">
           <div>
-            <img style={{ width: "300px", height: "60px" }} src={Logo} alt={"logo"} />
+            <img
+              style={{ width: "300px", height: "60px" }}
+              src={Logo}
+              alt={"logo"}
+            />
           </div>
 
-            <img src={Img} alt='img' style={{ width: "350px", height: "230px", borderRadius: "15px" }} />
+          <img
+            src={Img}
+            alt="img"
+            style={{ width: "350px", height: "230px", borderRadius: "15px" }}
+          />
 
-          <div className='form__box'>
+          <div className="form__box">
             <Input
-              type='text'
-              name='username'
-              placeholder='login'
+              type="text"
+              name="username"
+              placeholder="login"
               value={values.username}
-              onChange={handleInputChange} />
+              onChange={handleInputChange}
+            />
 
             <Input.Password
-              type='password'
-              name='password'
-              placeholder='Password'
+              type="password"
+              name="password"
+              placeholder="Password"
               value={values.password}
               onChange={handleInputChange}
             />
           </div>
-          <button className='btn__submit' >Login</button>
+          <button  className="btn__submit">Login</button>
         </form>
       </div>
     </>
-  )
-}
+  );
+}; 
 
 export default StudenLogin;
