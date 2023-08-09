@@ -49,7 +49,7 @@ function App() {
           
           <div className="dashbaord-content">
             <Routes>
-              <Route path="/dashboard" Component={Dashboard} />
+              <Route path="/dashboard" element={<Dashboard/>} />
 
               <Route path="/group" element={<Group />} />
               

@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink, Link } from "react-router-dom";
 
 
-import PathName from "./PathName.js";
+import Path from "./Path.js";
 import "./Menu.scss";
 import Logo from "../../assets/imgs/muazacademy.png";
 
@@ -23,7 +23,7 @@ function Menu() {
           </Link>
         </div>
 
-        {PathName.map((e, id) => {
+        {Path.map((e, id) => {
           return (
             <li className="menu__list-item" key={id}>
               <NavLink to={e.path} className="menu__link">

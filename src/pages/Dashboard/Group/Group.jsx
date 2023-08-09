@@ -40,19 +40,6 @@ function Group() {
 
   useEffect(() => {
     setTimeout(() => {
-      GetGroupServices.getAll()
-        .then((res) => {
-          setData(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      setLoading(false);
-    }, 1000);
-  }, []);
-
-  useEffect(() => {
-    setTimeout(() => {
       GetGroupServices.getData({
         page: currentPage,
         per_page: 7,
@@ -62,8 +49,9 @@ function Group() {
         },
       })
         .then((res) => {
+          console.log(res.data)
           setData(res.data.data);
-          GetGroupServices(res.data.totalCount);
+          setTotalCount(res.data.totalCount);
         })
         .catch((err) => {
           console.log(err);
@@ -83,11 +71,11 @@ function Group() {
             columns={[
               {
                 title: "groupName",
-                dataIndex: "groupName",
+                dataIndex: "name",
               },
               {
                 title: "subjectName",
-                dataIndex: "subjectName",
+                dataIndex: "subject",
               },
               {
                 title: "Status",

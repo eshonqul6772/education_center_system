@@ -1,9 +1,18 @@
-import { AiOutlineTeam } from "react-icons/ai";
+import { AiOutlineTeam,AiOutlineDashboard } from "react-icons/ai";
+
 import { PiStudentBold } from "react-icons/pi";
 import { MdGroups2, MdOutlineSubject } from "react-icons/md";
 import { LiaUserCircleSolid } from "react-icons/lia";
 
-const pathName = [
+const path= [
+  {
+    path: "/dashbaord",
+    title: (
+      <>
+        <AiOutlineDashboard size='30px' /> <span>Dashboard</span>
+      </>
+    ),
+  },
   {
     path: "/user",
     title: (
@@ -55,4 +64,4 @@ const pathName = [
   // },
 ];
 
-export default pathName;
+export default path;

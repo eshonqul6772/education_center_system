@@ -29,7 +29,7 @@ class Application extends React.Component {
         <p style={{
             position:'absolute',
             right: '50px',
-            bottom: '20px',
+            bottom: '0px',
             color: 'black',
         }}>{this.state.time}</p>
       );

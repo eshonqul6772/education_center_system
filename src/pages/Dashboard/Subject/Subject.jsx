@@ -56,7 +56,7 @@ function Subject() {
     subjectService
       .remove(id)
       .then((res) => {
-        setData(data.filter((element) => element.id !== id));
+        console.log(data.filter((element) => element.id !== id));
       })
       .catch((err) => {
         console.log(err);
