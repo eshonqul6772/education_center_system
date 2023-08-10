@@ -42,14 +42,13 @@ function Group() {
     setTimeout(() => {
       GetGroupServices.getData({
         page: currentPage,
-        per_page: 7,
+        per_page: 4,
         sort: {
           name: "id",
-          direction: "asc",
+          direction: "desc",
         },
       })
         .then((res) => {
-          console.log(res.data)
           setData(res.data.data);
           setTotalCount(res.data.totalCount);
         })
@@ -73,10 +72,16 @@ function Group() {
                 title: "groupName",
                 dataIndex: "name",
               },
+              
               {
-                title: "subjectName",
+                title: "subject",
                 dataIndex: "subject",
+                render: (item) => {
+                  console.log(item);
+                  return <div>{item.name}</div>;
+                }
               },
+
               {
                 title: "Status",
                 dataIndex: "status",
@@ -90,20 +95,41 @@ function Group() {
                 render: (item) => {
                   return (
                     <div className="d-flex align-items-center justify-content-end gap-3">
-                    <button
-                      onClick={() => navigate(`/group/${item.id}`)}
-                      className="edit__btn"
-                    >
-                      <MdModeEdit />
-                    </button>
-                    
-                    <Button
-                      variant="danger"
-                      title={<MdDelete size="25px" />}
-                      onClick={showModal}
-                      className="delet__btn"
-                    />
-                  </div>
+                      <button
+                        onClick={() => navigate(`/group/${item.id}`)}
+                        className="edit__btn"
+                      >
+                        <MdModeEdit />
+                      </button>
+
+                      <Button
+                        variant="danger"
+                        title={<MdDelete size="25px" />}
+                        onClick={showModal}
+                        className="delet__btn"
+                      />
+
+                      <Modal
+                        footer={null}
+                        title="You want to delete this user"
+                        open={isModalOpen}
+                        onOk={handleOk}
+                        onCancel={handleCancel}
+                      >
+                        <div className="d-flex justify-content-end gap-4 mt-4">
+                          <Button
+                            title="cancel"
+                            variant="neutral"
+                            onClick={handleCancel}
+                          />
+                          <Button
+                            title="delete"
+                            variant="danger-delete"
+                            onClick={() => hendelDelet(item.id)}
+                          />
+                        </div>
+                      </Modal>
+                    </div>
                   );
                 },
               },
@@ -120,23 +146,6 @@ function Group() {
           total={totalCount}
           onChange={(page) => setCurrentPage(page - 1)}
         />
-
-        <Modal
-          footer={null}
-          title="You want to delete this user"
-          open={isModalOpen}
-          onOk={handleOk}
-          onCancel={handleCancel}
-        >
-          <div className="d-flex justify-content-end gap-4 mt-4">
-            <Button title="cancel" variant="neutral" onClick={handleCancel} />
-            <Button
-              title="delete"
-              variant="danger-delete"
-              onClick={() => hendelDelet()}
-            />
-          </div>
-        </Modal>
 
         <div>
           <AddGroup />

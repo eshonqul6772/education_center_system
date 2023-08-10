@@ -1,102 +1,99 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MdDelete, MdModeEdit } from "react-icons/md";
-import { Modal, Pagination, Table } from "antd";
+import { Modal, Table, Pagination } from "antd";
 
-import getStudentsServisec from "services/student.service";
-import Button from "components/Button";
-import AddStudent from "./AddStudent";
-import "./Student.scss";
+import getTeamService from "../../../services/teacher.service";
+import Button from "../../../components/Button";
+import AddTeacher from "./AddTeacher";
 
-function Student() {
-    const navigate = useNavigate()
-  const [data, setStudent] = useState([]);
+function Teacher() {
+  const navigate = useNavigate("");
+  const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
   const [selected, setSelected] = useState(null);
 
-  useEffect(() => {
-    getStudentsServisec
-      .getAll({
-        page: currentPage,
-        per_page: 2,
-        sort: {
-          name: "id",
-          direction: "asc",
-        },
-      })
-      .then((res) => {
-        setStudent(res.data.content);
-        setTotalCount(res.data.totalCount);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [currentPage]);
-
   const hendelDelet = (id) => {
-    getStudentsServisec
+    getTeamService
       .remove(id)
       .then(() => {
         setSelected(null);
-        setStudent();
+        getList();
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
+  const getList = () => {
+    getTeamService
+      .getAll()
+      .then((res) => {
+        setData(res.data.content);
+        setTotalCount(res.data.totalCount);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getList();
+  }, []);
+
   return (
     <>
       <div className="table__box">
+        <Table
+          rowKey="id"
+          columns={[
+            {
+              title: "first_name",
+              dataIndex: "firstName",
+            },
+            {
+              title: "last_name",
+              dataIndex: "lastName",
+            },
 
+            {
+              title: "subject",
+              dataIndex: "subjects",
+              render: (item) => {
+                return item.map((subject) => (
+                  <span key={subject.id}>{subject.name}</span>
+                ));
+              },
+            },
 
-      <Table
-            rowKey="id"
-            columns={[
-              {
-                title: "first_name",
-                dataIndex: "firstName",
+            {
+              title: (
+                <span className="d-flex justify-content-end me-4">Action</span>
+              ),
+              render: (item) => {
+                return (
+                  <div className="d-flex align-items-center justify-content-end gap-3">
+                    <button
+                      onClick={() => navigate(`/student/${item.id}`)}
+                      className="edit__btn"
+                    >
+                      <MdModeEdit />
+                    </button>
+                    <Button
+                      onClick={() => setSelected(item.id)}
+                      variant="danger"
+                      title={<MdDelete size="25px" />}
+                      className="delet__btn"
+                    />
+                  </div>
+                );
               },
-              {
-                title: "last_name",
-                dataIndex: "lastName",
-              },
-
-              {
-                title: "phone_number",
-                dataIndex: "phone",
-              },
-
-              {
-                title: (
-                  <span className="d-flex justify-content-end me-4">
-                    Action
-                  </span>
-                ),
-                render: (item) => {
-                  return (
-                    <div className="d-flex align-items-center justify-content-end gap-3">
-                      <button
-                        onClick={() => navigate(`/student/${item.id}`)}
-                        className="edit__btn"
-                      >
-                        <MdModeEdit />
-                      </button>
-                      <Button
-                         onClick={() => setSelected(item.id)}
-                        variant="danger"
-                        title={<MdDelete size="25px" />}
-                        className="delet__btn"
-                      />
-                    </div>
-                  );
-                },
-              },
-            ]}
-            dataSource={data}
-            pagination={false}
-          />
+            },
+          ]}
+          dataSource={data}
+          pagination={false}
+        />
 
         {/* <div className="table-responsive ">
           <table className="table ">
@@ -105,31 +102,34 @@ function Student() {
               style={{ backgroundColor: "#003681", color: "white" }}
             >
               <tr className="p-4 table__head">
-                <th style={{ textAlign: "start" }}>firstName</th>
-                <th>firstName</th>
-                <th>tel</th>
+                <th style={{ textAlign: "start" }}>first_name</th>
+                <th>last_name</th>
                 <th>subject</th>
                 <th style={{ textAlign: "end" }}>operation</th>
               </tr>
             </thead>
 
             <tbody>
-              {student.map((e, i) => {
+              {team.map((e, i) => {
                 return (
                   <tr key={i}>
                     <td style={{ textAlign: "start" }}>{e.firstName}</td>
                     <td>{e.lastName}</td>
-                    <td>+998 971674748</td>
+
                     <td>MTH002</td>
                     <td>
                       <div className="d-flex align-items-center justify-content-end gap-3">
-                        <button className="edit__btn">
+                        <button
+                          onClick={() => navigate(`/teacher/${e.id}`)}
+                          className="edit__btn"
+                        >
                           <MdModeEdit />
                         </button>
 
                         <Button
                           variant="danger"
                           title={<MdDelete size="25px" />}
+                          onClick={() => setSelected(e.id)}
                           className="delet__btn"
                         />
                       </div>
@@ -169,10 +169,10 @@ function Student() {
           </div>
         </Modal>
 
-        <AddStudent />
+        <AddTeacher />
       </div>
     </>
   );
 }
 
-export default Student;
+export default Teacher;

@@ -22,7 +22,7 @@ const path= [
     ),
   },
   {
-    path: "/team",
+    path: "/teacher",
     title: (
       <>
         <AiOutlineTeam size='30px' /> <span>Teacher</span>

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Modal, Select } from "antd";
+import { Select, Modal } from "antd";
 
-import StudentService from "services/student.service";
-import GetSubject from "services/subject.service";
+import AddTeacher from "services/teacher.service";
+import getSubject from "services/subject.service.js";
 import Button from "components/Button";
-import "./AddStudent.scss";
+import "../Group/Group.scss";
 
-const AddStudent = () => {
+const EditTeacher = () => {
   const [subject, setSubject] = useState([]);
 
   const [values, setValues] = useState({
@@ -17,6 +17,7 @@ const AddStudent = () => {
     password: "",
     subject: [],
   });
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
@@ -30,6 +31,8 @@ const AddStudent = () => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
+
 
   const hendelSubmit = (evt) => {
     evt.preventDefault();
@@ -45,8 +48,9 @@ const AddStudent = () => {
     };
 
     console.log(data);
+  
 
-    StudentService.addStudent(data)
+    AddTeacher.AddData(data)
       .then((res) => {
         console.log(res);
       })
@@ -56,23 +60,24 @@ const AddStudent = () => {
   };
 
   useEffect(() => {
-    GetSubject.getAll().then((res) => {
+    getSubject.getAll().then((res) => {
       setSubject(res.data);
     });
   }, []);
 
+  
   return (
     <>
-      <Button title="add__student" onClick={showModal} variant="primary" />
+      <Button title="add_team" onClick={showModal} variant="primary" />
       <Modal
         width={570}
         footer={null}
-        title="add__student"
+        title="add_team"
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
       >
-       <form onSubmit={hendelSubmit} className="form-texnolgy">
+        <form onSubmit={hendelSubmit} className="form-texnolgy">
           <div>
             <div className="form__list">
               <div>
@@ -146,7 +151,8 @@ const AddStudent = () => {
                     teacher_subjects
                   </label>
                   <Select
-                    onChange={(e) => setValues({ ...values, subject: e })}
+                    onChange={(e) => setValues({ ...values, subjects: e })}
+                   
                     mode="tags"
                     style={{
                       width: "100%",             
@@ -167,5 +173,4 @@ const AddStudent = () => {
     </>
   );
 };
-
-export default AddStudent;
+export default EditTeacher;

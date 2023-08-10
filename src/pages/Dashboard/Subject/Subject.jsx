@@ -14,28 +14,29 @@ function Subject() {
 
   const [currentPage, setCurrentPage] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
+  const [selected, setSelected] = useState(null);
   const [data, setData] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const showModal = () => {
-    setIsModalOpen(true);
-    
+  const hendelDelet = (id) => {
+    subjectService
+      .remove(id)
+      .then(() => {
+        setSelected(null);
+        setData();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
 
   useEffect(() => {
     setTimeout(() => {
       subjectService
         .getData({
           page: currentPage,
-          per_page: 7,
+          per_page: 2,
           sort: {
             name: "id",
             direction: "asc",
@@ -52,17 +53,6 @@ function Subject() {
     });
   }, [currentPage]);
 
-  const hendelDelet = (id) => {
-    subjectService
-      .remove(id)
-      .then((res) => {
-        console.log(data.filter((element) => element.id !== id));
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    handleCancel();
-  };
 
   return (
     <>
@@ -77,9 +67,13 @@ function Subject() {
                 title: "Name",
                 dataIndex: "name",
               },
+
               {
-                title: "Status",
-                dataIndex: "status",
+                title: "subject",
+                dataIndex: "subject",
+                render: (item) => {
+                  return <div>Test</div>;
+                },
               },
               {
                 title: (
@@ -97,31 +91,11 @@ function Subject() {
                         <MdModeEdit />
                       </button>
                       <Button
-                        onClick={() => showModal(item.id)}
+                         onClick={() => setSelected(item.id)}
                         variant="danger"
                         title={<MdDelete size="25px" />}
                         className="delet__btn"
                       />
-                      <Modal
-                        footer={null}
-                        title="You want to delete this user"
-                        open={isModalOpen}
-                        onOk={handleOk}
-                        onCancel={handleCancel}
-                      >
-                        <div className="d-flex justify-content-end gap-4 mt-4">
-                          <Button
-                            title="cancel"
-                            variant="neutral"
-                            onClick={handleCancel}
-                          />
-                          <Button
-                            title="delete"
-                            variant="danger-delete"
-                            onClick={() => hendelDelet(item.id)}
-                          />
-                        </div>
-                      </Modal>
                     </div>
                   );
                 },
@@ -134,10 +108,31 @@ function Subject() {
 
         <Pagination
           className="my-3 d-flex justify-content-end"
+          pageSize={2}
           current={currentPage + 1}
           total={totalCount}
           onChange={(page) => setCurrentPage(page - 1)}
         />
+
+        <Modal
+          title="You want to delete this user"
+          open={selected}
+          onCancel={() => setSelected(null)}
+          footer={null}
+        >
+          <div className="d-flex justify-content-end gap-4 mt-4">
+            <Button
+              title="cancel"
+              variant="neutral"
+              onClick={() => setSelected(null)}
+            />
+            <Button
+              title="delete"
+              variant="danger-delete"
+              onClick={() => hendelDelet(selected)}
+            />
+          </div>
+        </Modal>
 
         <div>
           <AddSubject />

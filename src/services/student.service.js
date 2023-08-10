@@ -6,7 +6,11 @@ import authHeader from './auth-header.js'
 const API_URL = process.env.REACT_APP_MY_VARIABLE;
 
 const getAll = () => {
-  return axios.get(API_URL + '/students/list', { headers: authHeader() })
+  return axios.get(API_URL + '/students/pageable', { headers: authHeader() })
+}
+
+const getStudent = (id) => {
+  return axios.get(API_URL + '/students/' +id, { headers: authHeader() })
 }
 
 const addStudent = (data) => {
@@ -14,11 +18,18 @@ const addStudent = (data) => {
 }
 
 const remove = (id) => {
-  return axios.delete(API_URL + '/students' + id, { headers: authHeader() })
+  return axios.delete(API_URL + '/students/' + id, { headers: authHeader() })
 }
+
+const ubdate = (id,data) => {
+  return axios.put(API_URL + `/students/${id}`, data, { headers: authHeader() })
+}
+
 
 export default {
   getAll,
+  getStudent,
   addStudent,
   remove,
+  ubdate
 }

@@ -11,8 +11,8 @@ const { Option, OptGroup } = Select;
 const EditGroup = () => {
   const { id } = useParams();
   const navigate = useNavigate("");
-  const [subject, setSubject] = useState([]);
 
+  const [subject, setSubject] = useState([]);
   const [values, setValues] = useState({
     name: "",
     subject_id: "",
@@ -68,7 +68,7 @@ const EditGroup = () => {
                 <label className="form__category-lable" htmlFor="">
                   group_name
                 </label>
-                <input
+                <input className="form-control"
                   onChange={(e) =>
                     setValues({ ...values, name: e.target.value })
                   }

@@ -19,6 +19,7 @@ const Test = () => {
         },
       })
       .then((res) => {
+        console.log(res.data)
         setData(res.data.data);
         setTotalCount(res.data.totalCount);
       })
@@ -62,7 +63,7 @@ const Test = () => {
       />
 
       <Pagination
-        current={currentPage + 1}
+        current={currentPage+1}
         total={totalCount}
         onChange={(page) => setCurrentPage(page - 1)}
       />

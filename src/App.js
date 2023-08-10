@@ -10,10 +10,12 @@ import TeacherLogin from "pages/TeacherLogin";
 import Staff from "pages/Staf";
 import Home from "pages/Home";
 import Group from "pages/Dashboard/Group";
-import Team from "pages/Dashboard/Team";
+import EditGroup from "pages/Dashboard/Group/EditGroup";
+import Teacher from "pages/Dashboard/Teacher";
+import EditTeacher from "pages/Dashboard/Teacher/EditTeacher";
 import User from "pages/Dashboard/User";
 import Student from "pages/Dashboard/Student";
-import EditGroup from "pages/Dashboard/Group/EditGroup";
+import EditStudent from "pages/Dashboard/Student/EditSudent";
 import Subject from "pages/Dashboard/Subject";
 import EditSubject from "pages/Dashboard/Subject/EditSubject";
 import Support from "pages/Support";
@@ -43,37 +45,40 @@ function App() {
         <div style={{ width: "18%" }}>
           <Menu />
         </div>
-        
+
         <div style={{ width: "82%" }}>
           <Navbar />
-          
+
           <div className="dashbaord-content">
             <Routes>
-              <Route path="/dashboard" element={<Dashboard/>} />
+              <Route path="/dashboard" element={<Dashboard />} />
 
               <Route path="/group" element={<Group />} />
-              
+
               <Route path="/group/:id" element={<EditGroup />} />
 
-              <Route path="/team" element={<Team />} />
+              <Route path="/teacher" element={<Teacher />} />
+
+              <Route path="/teacher/:id" element={<EditTeacher />} />
 
               <Route path="/user" element={<User />} />
 
               <Route path="/student" element={<Student />} />
 
+              <Route path="/student/:id" element={<EditStudent />} />
+
               <Route path="/subject" element={<Subject />} />
 
               <Route path="/subject/:id" element={<EditSubject />} />
 
-              <Route  path="/test" element={<Test />} />
+              <Route path="/test" element={<Test />} />
 
               <Route path="*" element={<ErrorPage />} />
             </Routes>
-
           </div>
         </div>
       </div>
-      <GetTime/>
+      <GetTime />
     </>
   );
 }
