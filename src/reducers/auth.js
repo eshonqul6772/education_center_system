@@ -34,6 +34,7 @@ function auth(state = initialState, action) {
         token: null,
       };
     case LOGOUT:
+      console.log("LOGOUT")
       return {
         ...state,
         isLoggedIn: false,

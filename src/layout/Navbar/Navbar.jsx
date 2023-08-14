@@ -1,25 +1,23 @@
-import { useNavigate } from "react-router-dom";
-import { LiaUserCircleSolid } from "react-icons/lia";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { Button, Dropdown } from "antd";
-
-import { logout } from "../../reducers/actions/auth";
+import { LiaUserCircleSolid } from "react-icons/lia";
+import {FiLogOut} from "react-icons/fi"
 
 import "./Navbar.scss";
+import {LOGOUT} from '../../reducers/types';
 
 const Navbar = () => {
-  const navigate = useNavigate("");
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleLogout = () => {
-    localStorage.clear();
-    navigate("/");
+    dispatch({ type: LOGOUT })
   };
 
   const items = [
     {
       key: "1",
-      label: <button onClick={handleLogout}>Logout</button>,
+      label: <button className="text-danger" onClick={handleLogout}>Logout <FiLogOut color="red"/></button>,
     },
   ];
 
