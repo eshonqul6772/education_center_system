@@ -15,17 +15,7 @@ function Group() {
   const [totalCount, setTotalCount] = useState(0);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+  const [selected, setSelected] = useState(null);
 
   const hendelDelet = (id) => {
     GetGroupServices.remove(id)
@@ -35,7 +25,6 @@ function Group() {
       .catch((err) => {
         console.log(err);
       });
-    handleCancel();
   };
 
   useEffect(() => {
@@ -72,14 +61,14 @@ function Group() {
                 title: "groupName",
                 dataIndex: "name",
               },
-              
+
               {
                 title: "subject",
                 dataIndex: "subject",
                 render: (item) => {
                   console.log(item);
                   return <div>{item.name}</div>;
-                }
+                },
               },
 
               {
@@ -104,31 +93,10 @@ function Group() {
 
                       <Button
                         variant="danger"
+                        onClick={() => setSelected(item.id)}
                         title={<MdDelete size="25px" />}
-                        onClick={showModal}
                         className="delet__btn"
                       />
-
-                      <Modal
-                        footer={null}
-                        title="You want to delete this user"
-                        open={isModalOpen}
-                        onOk={handleOk}
-                        onCancel={handleCancel}
-                      >
-                        <div className="d-flex justify-content-end gap-4 mt-4">
-                          <Button
-                            title="cancel"
-                            variant="neutral"
-                            onClick={handleCancel}
-                          />
-                          <Button
-                            title="delete"
-                            variant="danger-delete"
-                            onClick={() => hendelDelet(item.id)}
-                          />
-                        </div>
-                      </Modal>
                     </div>
                   );
                 },
@@ -141,11 +109,32 @@ function Group() {
         )}
 
         <Pagination
+          pageSize={4}
           className="my-3 d-flex justify-content-end"
           current={currentPage + 1}
           total={totalCount}
           onChange={(page) => setCurrentPage(page - 1)}
         />
+
+        <Modal
+          title="You want to delete this user"
+          open={selected}
+          onCancel={() => setSelected(null)}
+          footer={null}
+        >
+          <div className="d-flex justify-content-end gap-4 mt-4">
+            <Button
+              title="cancel"
+              variant="neutral"
+              onClick={() => setSelected(null)}
+            />
+            <Button
+              title="delete"
+              variant="danger-delete"
+              onClick={() => hendelDelet(selected)}
+            />
+          </div>
+        </Modal>
 
         <div>
           <AddGroup />
