@@ -19,7 +19,7 @@ function Student() {
     getStudentsServisec
       .getAll({
         page: currentPage,
-        per_page: 2,
+        per_page: 4,
         sort: {
           name: "id",
           direction: "asc",
@@ -100,7 +100,7 @@ function Student() {
 
         <Pagination
           className="my-3 d-flex justify-content-end"
-          pageSize={2}
+          pageSize={4}
           current={currentPage + 1}
           total={totalCount}
           onChange={(page) => setCurrentPage(page - 1)}

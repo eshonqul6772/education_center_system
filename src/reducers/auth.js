@@ -21,25 +21,28 @@ function auth(state = initialState, action) {
         ...state,
         isLoggedIn: false,
       };
-    case LOGIN_SUCCESS:
+    case LOGIN_SUCCESS: {
+      localStorage.setItem('token', payload.token);
       return {
         ...state,
         isLoggedIn: true,
         token: payload.token,
       };
+    }
     case LOGIN_FAIL:
       return {
         ...state,
         isLoggedIn: false,
         token: null,
       };
-    case LOGOUT:
-      console.log("LOGOUT")
+    case LOGOUT: {
+      localStorage.removeItem('token');
       return {
         ...state,
         isLoggedIn: false,
         token: null,
       };
+    }
     default:
       return state;
   }

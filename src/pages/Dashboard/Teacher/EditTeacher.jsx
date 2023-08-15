@@ -36,14 +36,8 @@ const EditTeacher = () => {
     getTeacher
       .getTecher(id)
       .then((res) => {
-        const {
-          firstName,
-          lastName,
-          phone,
-          username,
-          password,
-          status,
-        } = res.data;
+        const { firstName, lastName, phone, username, password, status } =
+          res.data;
         setValues({
           firstName,
           lastName,
@@ -56,18 +50,15 @@ const EditTeacher = () => {
       .catch((err) => {
         console.log(err);
       });
-  },[id])
+  }, [id]);
 
-  console.log(values)
-
+  console.log(values);
 
   useEffect(() => {
     getSubject.getAll().then((res) => {
       setSubject(res.data);
     });
   }, []);
-
-  console.log(subjects)
 
   return (
     <>
@@ -78,7 +69,8 @@ const EditTeacher = () => {
               <label className="form__category-lable" htmlFor="">
                 first_name
               </label>
-              <input defaultValue={values.firstName}
+              <input
+                defaultValue={values.firstName}
                 className="form-control"
                 onChange={(e) =>
                   setValues({ ...values, firstName: e.target.value })
@@ -92,7 +84,8 @@ const EditTeacher = () => {
               <label className="form__category-lable" htmlFor="">
                 last_name
               </label>
-              <input defaultValue={values.lastName}
+              <input
+                defaultValue={values.lastName}
                 className="form-control"
                 onChange={(e) =>
                   setValues({ ...values, lastName: e.target.value })
@@ -108,7 +101,8 @@ const EditTeacher = () => {
               <label className="form__category-lable" htmlFor="">
                 phone
               </label>
-              <input defaultValue={values.phone}
+              <input
+                defaultValue={values.phone}
                 className="form-control"
                 onChange={(e) =>
                   setValues({ ...values, phone: e.target.value })
@@ -122,7 +116,8 @@ const EditTeacher = () => {
               <label className="form__category-lable" htmlFor="">
                 username
               </label>
-              <input defaultValue={values.username}
+              <input
+                defaultValue={values.username}
                 className="form-control"
                 onChange={(e) =>
                   setValues({ ...values, username: e.target.value })
@@ -138,7 +133,8 @@ const EditTeacher = () => {
               <label className="form__category-lable" htmlFor="">
                 password
               </label>
-              <input defaultValue={values.password}
+              <input
+                defaultValue={values.password}
                 className="form-control"
                 onChange={(e) =>
                   setValues({ ...values, password: e.target.value })
@@ -150,7 +146,7 @@ const EditTeacher = () => {
 
             <div className="d-flex flex-column mb-3">
               <label className="form__category-lable" htmlFor="">
-                teacher_subjects
+                student_subject
               </label>
               <Select
                 onChange={(e) => setValues({ ...values, subjects_ids: e })}
@@ -168,7 +164,6 @@ const EditTeacher = () => {
           </div>
         </div>
         <div className="d-flex justify-content-end me-4 mt-4">
-          {" "}
           <Button title="edit_teacher" variant="primary" type="sumit" />
         </div>
       </form>

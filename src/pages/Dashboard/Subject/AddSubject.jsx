@@ -10,30 +10,18 @@ const AddSubject = () => {
     subject: "",
   });
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+  const [selected, setSelected] = useState(null);
 
   const hendelSubmit = (evt) => {
 
-    evt.preventDefault();
+    
     
     const data = {
       name: values.subject,
       status: "ACTIVE",
     };
 
-    console.log(data);
+    
 
     AddSubjectServisece.addSubject(data)
       .then((res) => {
@@ -43,22 +31,19 @@ const AddSubject = () => {
         console.log(err);
       });
 
-
-   
-      
-      handleCancel()
+      setSelected(null)
+     
   };
 
   return (
     <>
-      <Button title="add_subject" onClick={showModal} variant="primary" />
+      <Button title="add_subject" onClick={setSelected} variant="primary" />
       <Modal
         width={570}
         footer={null}
         title="add_subject"
-        open={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
+        open={selected}
+        onCancel={() => setSelected(false)}
       >
         <form onSubmit={hendelSubmit} className="form-texnolgy">
           <div>
@@ -76,7 +61,7 @@ const AddSubject = () => {
                     placeholder="subject name"
                   />
                 </div>
-                <Button title="add" variant="primary" type="sumit" />
+                <Button  title="add" variant="primary" type="sumit" />
               </div>
             </div>
           </div>

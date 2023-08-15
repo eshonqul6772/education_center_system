@@ -33,7 +33,7 @@ const StudenLogin = () => {
         toast.success(res.message); 
       })
       .catch((err) => {
-        toast.success(err.message); 
+        toast.error(err.message); 
         console.log(err);
       });
   };

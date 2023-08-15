@@ -38,7 +38,6 @@ const AddUser = () => {
 
   const hendelSubmit = (evt) => {
 
-    evt.preventDefault()
 
     const data = {
       name: values.name,

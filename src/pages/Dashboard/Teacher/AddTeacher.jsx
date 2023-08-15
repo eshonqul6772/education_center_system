@@ -8,6 +8,7 @@ import "../Group/Group.scss";
 
 const EditTeacher = () => {
   const [subject, setSubject] = useState([]);
+  const [selected, setSelected] = useState(null);
 
   const [values, setValues] = useState({
     firstName: "",
@@ -18,25 +19,14 @@ const EditTeacher = () => {
     subject: [],
   });
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  
 
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
 
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
 
 
 
   const hendelSubmit = (evt) => {
-    evt.preventDefault();
-
+   
     const data = {
       firstName: values.firstName,
       lastName: values.lastName,
@@ -57,6 +47,7 @@ const EditTeacher = () => {
       .catch((err) => {
         console.log(err);
       });
+      setSelected(null)
   };
 
   useEffect(() => {
@@ -68,14 +59,13 @@ const EditTeacher = () => {
   
   return (
     <>
-      <Button title="add_team" onClick={showModal} variant="primary" />
+      <Button title="add_team" onClick={setSelected} variant="primary" />
       <Modal
         width={570}
         footer={null}
         title="add_team"
-        open={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
+        open={selected}
+        onCancel={() => setSelected(false)}
       >
         <form onSubmit={hendelSubmit} className="form-texnolgy">
           <div>

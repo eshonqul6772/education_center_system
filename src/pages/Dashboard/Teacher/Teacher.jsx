@@ -28,7 +28,14 @@ function Teacher() {
 
   const getList = () => {
     getTeamService
-      .getAll()
+      .getAll({
+        page: currentPage,
+          per_page: 4,
+          sort: {
+            name: "id",
+            direction: "asc",
+          },
+      })
       .then((res) => {
         setData(res.data.content);
         setTotalCount(res.data.totalCount);
@@ -75,7 +82,7 @@ function Teacher() {
                 return (
                   <div className="d-flex align-items-center justify-content-end gap-3">
                     <button
-                      onClick={() => navigate(`/student/${item.id}`)}
+                      onClick={() => navigate(`/teacher/${item.id}`)}
                       className="edit__btn"
                     >
                       <MdModeEdit />
@@ -94,52 +101,6 @@ function Teacher() {
           dataSource={data}
           pagination={false}
         />
-
-        {/* <div className="table-responsive ">
-          <table className="table ">
-            <thead
-              className=""
-              style={{ backgroundColor: "#003681", color: "white" }}
-            >
-              <tr className="p-4 table__head">
-                <th style={{ textAlign: "start" }}>first_name</th>
-                <th>last_name</th>
-                <th>subject</th>
-                <th style={{ textAlign: "end" }}>operation</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {team.map((e, i) => {
-                return (
-                  <tr key={i}>
-                    <td style={{ textAlign: "start" }}>{e.firstName}</td>
-                    <td>{e.lastName}</td>
-
-                    <td>MTH002</td>
-                    <td>
-                      <div className="d-flex align-items-center justify-content-end gap-3">
-                        <button
-                          onClick={() => navigate(`/teacher/${e.id}`)}
-                          className="edit__btn"
-                        >
-                          <MdModeEdit />
-                        </button>
-
-                        <Button
-                          variant="danger"
-                          title={<MdDelete size="25px" />}
-                          onClick={() => setSelected(e.id)}
-                          className="delet__btn"
-                        />
-                      </div>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div> */}
 
         <Pagination
           className="my-3 d-flex justify-content-end"
