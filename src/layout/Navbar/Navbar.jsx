@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Button, Dropdown } from "antd";
 import { LiaUserCircleSolid } from "react-icons/lia";
@@ -8,9 +9,11 @@ import "./Navbar.scss";
 import {LOGOUT} from '../../reducers/types';
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleLogout = () => {
+    navigate('/')
     dispatch({ type: LOGOUT })
   };
 

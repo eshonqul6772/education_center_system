@@ -40,7 +40,7 @@
 
   h2 {
     font-size: 40px;
-    margin-bottom: 50px;
+    margin-block-end: 50px;
   }
 
 }
@@ -50,7 +50,7 @@
 }
 
 .baner__img {
-  width: 900px;
-  height: 700px;
+  inline-size: 50vw;
+  block-size: 90vh;
   border: 1px solid #b7b798;
 }
