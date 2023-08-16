@@ -9,8 +9,6 @@ import Logo from "assets/imgs/muazacademy.png";
 import "./StudentLogin.scss";
 import { setLocale } from "yup";
 
-
-
 const StudenLogin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate("");
@@ -28,18 +26,31 @@ const StudenLogin = () => {
     e.preventDefault();
 
     dispatch(login(values.username, values.password))
-    .then((res) => {
-      navigate("/user");
-      toast.success("login successful")
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  }
- return (
+      .then((res) => {
+        navigate("/user");
+        console.log(res);
+      })
+      .catch((err) => {
+        toast.error('USERNAME_OR_PASSWORD_INCORRECT')
+        console.log(err);
+      });
+  };
+
+  return (
     <>
       <div className="wrapper">
-        <Toaster position="top-center" reverseOrder={true} />
+        <Toaster
+          position="top-center"
+          reverseOrder={true}
+          toastOptions={{
+            className: "toast",
+            style: {
+              display: "flex",
+              border: "1px solid #713200",
+              width: "800px",
+            },
+          }}
+        />
         <form onSubmit={handleSubmit} action="">
           <div>
             <img
@@ -52,7 +63,11 @@ const StudenLogin = () => {
           <img
             src={Img}
             alt="img"
-            style={{ inlineSize: "350px", blockSize: "230px", borderRadius: "15px" }}
+            style={{
+              inlineSize: "350px",
+              blockSize: "230px",
+              borderRadius: "15px",
+            }}
           />
 
           <div className="form__box">
@@ -72,11 +87,11 @@ const StudenLogin = () => {
               onChange={handleInputChange}
             />
           </div>
-          <button  className="btn__submit">Login</button>
-        </form> 
+          <button className="btn__submit">Login</button>
+        </form>
       </div>
     </>
   );
-}; 
+};
 
 export default StudenLogin;
