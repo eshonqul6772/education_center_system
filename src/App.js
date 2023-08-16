@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import Navbar from "layout/Navbar";
 import Menu from "layout/Menu";
 import AdminLogin from "pages/AdminLogin";
-import StudentLogin from "pages/StudenLogin";
+import StudentLogin from "pages/StudenLogin/StudentLogin";
 import TeacherLogin from "pages/TeacherLogin";
 import Staff from "pages/Staf";
 import Home from "pages/Home";
@@ -23,15 +23,20 @@ import Test from "pages/Dashboard/Test";
 import ErrorPage from "components/ErrorPage/ErrorPage";
 import Dashboard from "pages/Dashboard/Dashboard";
 import GetTime from "components/getTime/";
+import { useState } from "react";
 
 function App() {
   const { isLoggedIn } = useSelector((state) => state.auth);
+  const [sole , setRole] = useState('admin')
 
   if (!isLoggedIn) {
     return (
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route exact path="/studentlogin" element={<StudentLogin />} />
+        <Route  path="/" element={<Home />} />
+        {
+          sole === 'admin'?        <Route  exact path="/studentlogin" element={<StudentLogin />} /> :''
+        }
+ 
         <Route path="/staff" element={<Staff />} />
         <Route path="/admin" element={<AdminLogin />} />
         <Route path="/teacher" element={<TeacherLogin />} />
@@ -42,11 +47,11 @@ function App() {
   return (
     <>
       <div className="dashboard">
-        <div style={{ width: "18%" }}>
+        <div style={{ inlineSize: "18%" }}>
           <Menu />
         </div>
 
-        <div style={{ width: "82%" }}>
+        <div style={{ inlineSize: "82%" }}>
           <Navbar />
 
           <div className="dashbaord-content">

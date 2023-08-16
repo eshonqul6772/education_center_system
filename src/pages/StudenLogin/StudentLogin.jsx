@@ -3,11 +3,11 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Input } from "antd";
 import toast, { Toaster } from "react-hot-toast";
-
 import { login } from "reducers/actions/auth";
 import Img from "assets/imgs/teacher.jpg";
 import Logo from "assets/imgs/muazacademy.png";
 import "./StudentLogin.scss";
+import { setLocale } from "yup";
 
 
 
@@ -28,25 +28,22 @@ const StudenLogin = () => {
     e.preventDefault();
 
     dispatch(login(values.username, values.password))
-      .then((res) => {
-        navigate("/user");
-        toast.success(res.message); 
-      })
-      .catch((err) => {
-        toast.error(err.message); 
-        console.log(err);
-      });
-  };
-
-  return (
+    .then((res) => {
+      navigate("/user");
+      toast.success("login successful")
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+ return (
     <>
       <div className="wrapper">
         <Toaster position="top-center" reverseOrder={true} />
-
         <form onSubmit={handleSubmit} action="">
           <div>
             <img
-              style={{ width: "300px", height: "60px" }}
+              style={{ inlineSize: "300px", blockSize: "60px" }}
               src={Logo}
               alt={"logo"}
             />
@@ -55,7 +52,7 @@ const StudenLogin = () => {
           <img
             src={Img}
             alt="img"
-            style={{ width: "350px", height: "230px", borderRadius: "15px" }}
+            style={{ inlineSize: "350px", blockSize: "230px", borderRadius: "15px" }}
           />
 
           <div className="form__box">
@@ -76,7 +73,7 @@ const StudenLogin = () => {
             />
           </div>
           <button  className="btn__submit">Login</button>
-        </form>
+        </form> 
       </div>
     </>
   );

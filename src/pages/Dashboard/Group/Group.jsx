@@ -14,8 +14,8 @@ function Group() {
   const [currentPage, setCurrentPage] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const hendelDelet = (id) => {
     GetGroupServices.remove(id)
