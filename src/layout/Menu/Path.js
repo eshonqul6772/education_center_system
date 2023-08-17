@@ -6,7 +6,7 @@ import { LiaUserCircleSolid } from "react-icons/lia";
 
 const path= [
   {
-    path: "/dashbaord",
+    path: "/dashboard",
     title: (
       <>
         <AiOutlineDashboard size='30px' /> <span>Dashboard</span>

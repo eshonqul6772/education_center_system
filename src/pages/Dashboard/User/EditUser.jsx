@@ -1,67 +1,146 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import React, {useEffect, useState} from 'react'
+import {useNavigate, useParams} from 'react-router-dom'
 
 
-import ServiseUser from 'services/subject.service.js'
+import ServiceUser from 'services/user.service'
 
 import Button from 'components/Button'
 
 
 const EditSubject = () => {
-    const { id } = useParams();
+    const {id} = useParams();
     const navigate = useNavigate('');
 
     const [values, setValues] = useState({
-        name: '',
+        firstName: '',
+        lastName: '',
+        phone:'',
+        username: '',
+        password:'',
+        roleId:'',
         status: 'ACTIVE'
     });
 
 
     useEffect(() => {
-        ServiseUser.getSubject(id)
+        ServiceUser.getUserId(id)
             .then((res) => {
-                const { name, status } = res.data;
-                setValues({ name, status });
+                console.log(res.data)
+                const {firstName, lastName, phone,username, password,roleId, status} = res.data;
+                setValues({firstName,lastName, phone,username, password, roleId, status});
             })
             .catch((err) => console.log(err));
     }, [id]);
-
+    console.log(values)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        ServiseUser.ubdate(id, values)
+        ServiceUser.update(id, values)
             .then((res) => {
-                navigate('/subject');
+                navigate('/user');
             }).catch((err) => {
-                console.log(err);
-            });
+            console.log(err);
+        });
     }
 
+    console.log(values)
 
     return (
-        <form onSubmit={handleSubmit} className="form-texnolgy">
-            <div>
-                <div className="form__list">
-                    <div>
-                        <div className="d-flex flex-column mb-3">
+        <div className="table__box">
+            <form onSubmit={handleSubmit} className='w-100'>
+
+
+                    <div className="d-flex justify-content-between w-100 mb-3">
+                        <div className="w-25">
                             <label className="form__category-lable" htmlFor="">
-                                subject_name
+                                firs_name
                             </label>
-                            
-                            <input
-                                onChange={(e) => setValues({ ...values, name: e.target.value })}
-                                type="text"
-                                placeholder="subject name"
-                                defaultValue={values.name}
+
+                            <input className="form-control"
+                                   onChange={(e) => setValues({...values, firstName: e.target.value})}
+                                   type="text"
+                                   placeholder="first_name"
+                                   defaultValue={values.firstName}
                             />
                         </div>
 
-                        <Button title="edit_subject" variant="primary" type="sumit" />
+                        <div className="w-25">
+                            <label className="form__category-lable" htmlFor="">
+                               last_name
+                            </label>
+
+                            <input className="form-control"
+                                   onChange={(e) => setValues({...values, lastName: e.target.value})}
+                                   type="text"
+                                   placeholder="subject name"
+                                   defaultValue={values.lastName}
+                            />
+                        </div>
+
+
+                        <div className="w-25">
+                            <label className="form__category-lable" htmlFor="">
+                               phone
+                            </label>
+
+                            <input className="form-control"
+                                   onChange={(e) => setValues({...values, phone: e.target.value})}
+                                   type="text"
+                                   placeholder="phone"
+                                   defaultValue={values.phone}
+                            />
+                        </div>
+                    </div>
+
+                <div className="d-flex justify-content-between w-100 mb-3">
+                    <div className="w-25">
+                        <label className="form__category-lable" htmlFor="">
+                           username
+                        </label>
+
+                        <input className="form-control"
+                               onChange={(e) => setValues({...values, username: e.target.value})}
+                               type="text"
+                               placeholder="username"
+                               defaultValue={values.username}
+                        />
+                    </div>
+
+                    <div className="w-25">
+                        <label className="form__category-lable" htmlFor="">
+                            password
+                        </label>
+
+                        <input className="form-control"
+                               onChange={(e) => setValues({...values,password: e.target.value})}
+                               type="text"
+                               placeholder="password"
+                               defaultValue={values.password}
+                        />
+                    </div>
+
+
+                    <div className="w-25">
+                        <label className="form__category-lable" htmlFor="">
+                            role
+                        </label>
+
+                        <input className="form-control"
+                               disabled
+                               onChange={(e) => setValues({...values, username: e.target.value})}
+                               type="text"
+                               placeholder="usernmae"
+                               defaultValue='admin'
+                        />
                     </div>
                 </div>
-            </div>
-        </form>
+
+                    <Button title="edit_user" variant="primary" type="sumit"/>
+
+
+            </form>
+        </div>
     )
 }
 

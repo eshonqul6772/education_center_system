@@ -1,22 +1,20 @@
 import { useState, useEffect } from 'react';
-import { MdDelete, MdModeEdit } from 'react-icons/md';
-import { Modal, Table } from 'antd';
+import {AiTwotoneEdit} from 'react-icons/ai'
+import {useNavigate} from 'react-router-dom';
 
 import UserServices from "services/user.service"
-import Columns from "./DataHeader.js"
-import Button from 'components/Button';
-import AddUser from "components/AddUser"
+import MeImg from 'assets/imgs/no-picture.jpg'
 import './User.scss';
 
-function User() {
 
-  const [valus, setValus] = useState([[]])
+function User() {
+const navigate = useNavigate()
+   const [values, setValues] = useState('')
 
   useEffect(() => {
     UserServices.getUser()
       .then((result) => {
-        setValus(result.data)
-
+        setValues(result.data)
       }).catch((err) => {
         console.log(err)
       });
@@ -24,50 +22,22 @@ function User() {
 
 
 
-  console.log(valus)
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-
   return (
     <>
       <div className='table__box'>
-        <Table columns={Columns} dataSource={[
-          {
-            key: valus.id,
-            firstName: valus.firstName,
-            lastName: valus.lastName,
-            phone: valus.phone,
-            username: valus.username,
-            operation: <>
-              <div className='d-flex align-items-center justify-content-end gap-3'>
-                <button className='edit__btn'>
-                  <MdModeEdit />
-                </button>
+        <h2 className='text-black mb-3'>Malumot</h2>
+          <div className='d-flex gap-4 position-relative'>
+            <button onClick={()=> navigate(`/user/${values.id}`)} className='btn__edit'><AiTwotoneEdit/></button>
+              <div className=''>
+                <img src={MeImg} alt={MeImg} style={{width:'200px', height:'200px'}}/>
 
-                <Button variant="danger" title={<MdDelete size='25px' />} onClick={showModal} className='delet__btn' />
-
+                <h3>F.I: {values.firstName}. {values.lastName}</h3>
+                <h3>tel_number:{values.phone}</h3>
               </div>
-            </>
-          },
-        ]} />
-        <AddUser />
+            <strong>role:ADMIN</strong>
+          </div>
       </div>
 
-      <Modal footer={null} title="You want to delete this user" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-        <div className='d-flex justify-content-end gap-4 mt-4'>
-          <Button title='cancel' variant='neutral' onClick={handleCancel} />
-          <Button title='delete' variant='danger-delete' />
-        </div>
-      </Modal>
     </>
   );
 }

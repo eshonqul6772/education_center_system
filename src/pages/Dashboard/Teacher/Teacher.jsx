@@ -30,14 +30,14 @@ function Teacher() {
     getTeamService
       .getAll({
         page: currentPage,
-          per_page: 4,
+          per_page: 2,
           sort: {
             name: "id",
             direction: "asc",
           },
       })
       .then((res) => {
-        setData(res.data.content);
+        setData(res.data.data);
         setTotalCount(res.data.totalCount);
       })
       .catch((err) => {
@@ -73,6 +73,14 @@ function Teacher() {
                 ));
               },
             },
+
+              {
+                  title: "status",
+                  dataIndex: "status",
+                  render: (item) => {
+                      return <span className='border py-1 px-2 border-success rounded'>ACTIVE</span>;
+                  },
+              },
 
             {
               title: (

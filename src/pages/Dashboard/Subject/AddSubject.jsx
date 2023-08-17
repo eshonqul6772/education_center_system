@@ -13,15 +13,10 @@ const AddSubject = () => {
   const [selected, setSelected] = useState(null);
 
   const hendelSubmit = (evt) => {
-
-    
-    
     const data = {
       name: values.subject,
       status: "ACTIVE",
     };
-
-    
 
     AddSubjectServisece.addSubject(data)
       .then((res) => {
@@ -31,8 +26,7 @@ const AddSubject = () => {
         console.log(err);
       });
 
-      setSelected(null)
-     
+    setSelected(null);
   };
 
   return (
@@ -54,6 +48,7 @@ const AddSubject = () => {
                     subject_name
                   </label>
                   <input
+                    className="form-control"
                     onChange={(e) =>
                       setValues({ ...values, subject: e.target.value })
                     }
@@ -61,7 +56,7 @@ const AddSubject = () => {
                     placeholder="subject name"
                   />
                 </div>
-                <Button  title="add" variant="primary" type="sumit" />
+                <Button title="add" variant="primary" type="sumit" />
               </div>
             </div>
           </div>

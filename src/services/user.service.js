@@ -9,6 +9,17 @@ const getUser = () => {
     return axios.get(API_URL + '/users/me', {headers: authHeader()});
 };
 
+const getUserId = (id) => {
+    return axios.get(API_URL + '/users/' + id, {headers: authHeader()});
+};
+
+const update = (id, data) => {
+    return axios.put(API_URL + `/user/${id}`,data, {headers: authHeader()});
+};
+
+
 export default {
-    getUser
+    getUser,
+    getUserId,
+    update
 };

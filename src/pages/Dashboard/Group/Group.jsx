@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import "./Group.scss";
 import GetGroupServices from "services/group.service";
+// import SearchService from "services/search.service";
 import Button from "components/Button";
 import AddGroup from "./AddGroup";
 import Loader from "components/Loader";
@@ -27,7 +28,16 @@ function Group() {
       });
   };
 
-  
+  // const searchData = (name) => {
+  //   SearchService.searchGroup(name, {
+  //     page: currentPage,
+  //     per_page: 4,
+  //   }).then((res) => {
+  //     console.log(res.data.data);
+  //     setTotalCount(res.data.totalCount);
+  //     setData(res.data.data);
+  //   });
+  // };
 
   useEffect(() => {
     setTimeout(() => {
@@ -53,6 +63,7 @@ function Group() {
   return (
     <>
       <div className="table__box">
+       
         {loading ? (
           <Loader />
         ) : (
@@ -68,7 +79,6 @@ function Group() {
                 title: "subject",
                 dataIndex: "subject",
                 render: (item) => {
-                  console.log(item);
                   return <div>{item.name}</div>;
                 },
               },
@@ -76,6 +86,9 @@ function Group() {
               {
                 title: "Status",
                 dataIndex: "status",
+                render: (item) => {
+                  return <span className='border py-1 px-2 border-success rounded'>ACTIVE</span>;
+                },
               },
               {
                 title: (

@@ -35,11 +35,20 @@ body{
   justify-content: space-between;
 }
 
-.dashbaord-content{
+.table__box{
   margin: 20px;
   padding: 20px;
   background-color: white;
   border-radius: 10px;
+
+  .edit__btn {
+    border-radius: 5px;
+    background: #c0dfea;
+    color: #01384d;
+    border: none;
+    padding: 6px;
+    font-size: 25px;
+  }
 }
 
 

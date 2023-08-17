@@ -8,6 +8,12 @@ const getData = (data) => {
   return axios.post(API_URL + '/groups/pageable', data, {headers: authHeader()})
 }
 
+const searchGroup = (search, data) => {
+  return axios.post(API_URL + `groups/pageable/search?search=${search}`, data, {
+    headers: authHeader(),
+  });
+};
+
 const getAll = () => {
   return axios.get(API_URL + '/groups/list', { headers: authHeader() })
 }
@@ -30,6 +36,7 @@ const ubdate = (id,data) => {
 
 
 export default {
+  searchGroup,
   getAll,
   getGroup,
   addGroup,

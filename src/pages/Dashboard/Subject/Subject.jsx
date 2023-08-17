@@ -8,6 +8,7 @@ import subjectService from "services/subject.service";
 import AddSubject from "./AddSubject";
 import Loader from "components/Loader";
 import "../Group/Group.scss";
+import Search from "components/Search/Search";
 
 function Subject() {
   const navigate = useNavigate("");
@@ -69,10 +70,10 @@ function Subject() {
               },
 
               {
-                title: "subject",
+                title: "status",
                 dataIndex: "subject",
                 render: (item) => {
-                  return <div>ACTIVE</div>;
+                  return <span className='border py-1 px-2 border-success rounded'>ACTIVE</span>;
                 },
               },
               {
@@ -133,7 +134,6 @@ function Subject() {
             />
           </div>
         </Modal>
-
         <div>
           <AddSubject />
         </div>

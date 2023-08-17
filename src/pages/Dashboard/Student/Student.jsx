@@ -21,16 +21,13 @@ function Student() {
     setTimeout(() => {
       getStudentsServisec
         .getAll({
-          page: currentPage,
-          per_page: 4,
-          sort: {
-            name: "id",
-            direction: "asc",
-          },
+          "page": currentPage,
+          "per_page": 4
         })
         .then((res) => {
-          setStudent(res.data.content);
+          setStudent(res.data.data);
           setTotalCount(res.data.totalCount);
+          console.log(res)
         })
         .catch((err) => {
           console.log(err);
@@ -72,6 +69,14 @@ function Student() {
               {
                 title: "phone_number",
                 dataIndex: "phone",
+              },
+
+              {
+                title: "status",
+                dataIndex:"status",
+                render: (item) => {
+                  return <span className='border py-1 px-2 border-success rounded'>ACTIVE</span>;
+                },
               },
 
               {

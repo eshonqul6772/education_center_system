@@ -6,8 +6,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { login } from "reducers/actions/auth";
 import Img from "assets/imgs/teacher.jpg";
 import Logo from "assets/imgs/muazacademy.png";
-import "./StudentLogin.scss";
-import { setLocale } from "yup";
+import "./StudentLogin.scss";;
 
 const StudenLogin = () => {
   const dispatch = useDispatch();
@@ -87,7 +86,7 @@ const StudenLogin = () => {
               onChange={handleInputChange}
             />
           </div>
-          <button className="btn__submit">Login</button>
+          <button className="btn__submit">Login</button> ~
         </form>
       </div>
     </>
