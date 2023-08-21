@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import {AiTwotoneEdit} from 'react-icons/ai'
 import {useNavigate} from 'react-router-dom';
 
-import UserServices from "services/user.service"
-import MeImg from 'assets/imgs/no-picture.jpg'
+import UserServices from "services/user.service";
+import AddUser from "./AddUser"
+import MeImg from 'assets/imgs/no-picture.jpg';
 import './User.scss';
 
 
@@ -37,7 +38,6 @@ const navigate = useNavigate()
             <strong>role:ADMIN</strong>
           </div>
       </div>
-
     </>
   );
 }

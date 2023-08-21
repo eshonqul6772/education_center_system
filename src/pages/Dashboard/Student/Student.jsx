@@ -3,11 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { MdDelete, MdModeEdit } from "react-icons/md";
 import { Modal, Pagination, Table } from "antd";
 
-import getStudentsServisec from "services/student.service";
+import getStudentsService from "services/student.service";
 import Button from "components/Button";
 import AddStudent from "./AddStudent";
 import Loader from "components/Loader";
 import "./Student.scss";
+import {AiOutlineSearch} from 'react-icons/ai';
+
 
 function Student() {
   const navigate = useNavigate();
@@ -17,27 +19,9 @@ function Student() {
   const [selected, setSelected] = useState(null);
   const [loader, setLoader] = useState(true);
 
-  useEffect(() => {
-    setTimeout(() => {
-      getStudentsServisec
-        .getAll({
-          "page": currentPage,
-          "per_page": 4
-        })
-        .then((res) => {
-          setStudent(res.data.data);
-          setTotalCount(res.data.totalCount);
-          console.log(res)
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }, 1000);
-    setLoader(false);
-  }, [currentPage]);
 
   const hendelDelet = (id) => {
-    getStudentsServisec
+    getStudentsService
       .remove(id)
       .then(() => {
         setSelected(null);
@@ -48,8 +32,42 @@ function Student() {
       });
   };
 
+  const searchData = (name) => {
+    setLoader(true)
+    getStudentsService.getAll(name, {
+      page: currentPage,
+      per_page: 3,
+      sort: {
+        name: 'id',
+        direction: 'desc',
+      },
+    }).then((res) => {
+      setTotalCount(res.data.totalCount);
+      setStudent(res.data.data);
+    }).catch((err) => {
+      console.log(err);
+    });
+    setLoader(false)
+  };
+
+  useEffect(() => {
+    setTimeout(()=>{
+      searchData()
+    },1000)
+  }, [currentPage]);
+
   return (
     <>
+
+      <div className='search_box table__box'>
+        <input id='search' placeholder="search..." className="form-control"
+               onChange={e => searchData(e.target.value)}
+        />
+        <label htmlFor='search' className='search_icon'>
+          <button className='search__btn'><AiOutlineSearch size='20px' color='white'/></button>
+        </label>
+      </div>
+
       <div className="table__box">
         {loader ? (
           <Loader />

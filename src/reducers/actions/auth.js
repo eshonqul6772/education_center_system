@@ -54,25 +54,24 @@ export const login = (userName, password) => (dispatch) => {
       return Promise.resolve();
     },
 
-    // (error) => {
-    //   console.log(error);
-    //   const message =
-    //     (error.response && error.response.data && error.response.data.message) ||
-    //     error.message ||
-    //     error.toString();
+      (error) => {
+        console.log(error);
+        const message =
+          (error.response && error.response.data && error.response.data.message)
+          error.message
+          error.toString();
 
-    //   dispatch({
-    //     type: LOGIN_FAIL,
-    //   });
+        dispatch({
+          type: LOGIN_FAIL,
+        });
 
-    //   dispatch({
-    //     type: SET_MESSAGE,
-    //     payload: message,
-    //   });
+        dispatch({
+          type: SET_MESSAGE,
+          payload: message,
+        });
 
-    //   return Promise.reject();
-    // },
-
+        return Promise.reject();
+      },
   );
 };
 

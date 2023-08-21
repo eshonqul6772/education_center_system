@@ -60,58 +60,60 @@ const EditGroup = () => {
   
   return (
     <>
-      <form onSubmit={handleSubmit} className="form-texnolgy">
-        <div>
-          <div className="form__list">
-            <div>
-              <div className="d-flex flex-column mb-3">
-                <label className="form__category-lable" htmlFor="">
-                  group_name
-                </label>
-                <input className="form-control"
-                  onChange={(e) =>
-                    setValues({ ...values, name: e.target.value })
-                  }
-                  type="text"
-                  placeholder="group name"
-                  defaultValue={values.name}
-                />
+      <div className='table__box'>
+        <form onSubmit={handleSubmit} className="form-texnolgy">
+          <div>
+            <div className="form__list">
+              <div>
+                <div className="d-flex flex-column mb-3">
+                  <label className="form__category-lable" htmlFor="">
+                    group_name
+                  </label>
+                  <input className="form-control"
+                         onChange={(e) =>
+                             setValues({ ...values, name: e.target.value })
+                         }
+                         type="text"
+                         placeholder="group name"
+                         defaultValue={values.name}
+                  />
+                </div>
+
+                <div className="d-flex flex-column mb-3">
+                  <label className="form__category-lable" htmlFor="">
+                    subject
+                  </label>
+                  <Select
+                      onSelect={(e) => setValues({ ...values, subject_id: e })}
+                      style={{
+                        width: 515,
+                      }}
+                      defaultValue={values.subjectValue}
+                      options={subject.map((item) => ({
+                        value: item.id,
+                        label: item.name,
+                      }))}
+                  />
+
+                  <Select
+                      className="mt-4"
+                      onSelect={(e) => setValues({ ...values, status: e })}
+                      defaultValue="ACTIVE"
+                      style={{ width: 515 }}
+                  >
+                    <OptGroup label="status">
+                      <Option value="ACTIVE">ACTIVE</Option>
+                      <Option value="NOACTIVE">NO_ACTIVE</Option>
+                    </OptGroup>
+                  </Select>
+                </div>
+
+                <Button title="edit" variant="primary" type="sumit" />
               </div>
-
-              <div className="d-flex flex-column mb-3">
-                <label className="form__category-lable" htmlFor="">
-                  subject
-                </label>
-                <Select
-                  onSelect={(e) => setValues({ ...values, subject_id: e })}
-                  style={{
-                    width: 515,
-                  }}
-                  defaultValue={values.subjectValue}
-                  options={subject.map((item) => ({
-                    value: item.id,
-                    label: item.name,
-                  }))}
-                />
-
-                <Select
-                  className="mt-4"
-                  onSelect={(e) => setValues({ ...values, status: e })}
-                  defaultValue="ACTIVE"
-                  style={{ width: 515 }}
-                >
-                  <OptGroup label="status">
-                    <Option value="ACTIVE">ACTIVE</Option>
-                    <Option value="NOACTIVE">NO_ACTIVE</Option>
-                  </OptGroup>
-                </Select>
-              </div>
-
-              <Button title="edit" variant="primary" type="sumit" />
             </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </>
   );
 };

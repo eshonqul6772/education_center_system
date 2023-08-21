@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {  Modal } from 'antd';
 
 
-import Button from "../../components/Button"
+import Button from "../../../../components/Button"
 import "./Adduser.scss"
 
 const AddUser = () => {

@@ -62,111 +62,113 @@ const EditTeacher = () => {
 
   return (
     <>
-      <form onSubmit={hendelSubmit} className=" w-100">
-        <div className="d-flex flex-wrap justify-content-around w-100 align-items-center">
-          <div className="w-25">
-            <div className="d-flex flex-column mb-3">
-              <label className="form__category-lable" htmlFor="">
-                first_name
-              </label>
-              <input
-                defaultValue={values.firstName}
-                className="form-control"
-                onChange={(e) =>
-                  setValues({ ...values, firstName: e.target.value })
-                }
-                type="text"
-                placeholder="first_name"
-              />
-            </div>
+     <div className='table__box'>
+       <form onSubmit={hendelSubmit} className=" w-100">
+         <div className="d-flex flex-wrap justify-content-around w-100 align-items-center">
+           <div className="w-25">
+             <div className="d-flex flex-column mb-3">
+               <label className="form__category-lable" htmlFor="">
+                 first_name
+               </label>
+               <input
+                   defaultValue={values.firstName}
+                   className="form-control"
+                   onChange={(e) =>
+                       setValues({ ...values, firstName: e.target.value })
+                   }
+                   type="text"
+                   placeholder="first_name"
+               />
+             </div>
 
-            <div className="d-flex flex-column mb-3">
-              <label className="form__category-lable" htmlFor="">
-                last_name
-              </label>
-              <input
-                defaultValue={values.lastName}
-                className="form-control"
-                onChange={(e) =>
-                  setValues({ ...values, lastName: e.target.value })
-                }
-                type="text"
-                placeholder="last_name"
-              />
-            </div>
-          </div>
+             <div className="d-flex flex-column mb-3">
+               <label className="form__category-lable" htmlFor="">
+                 last_name
+               </label>
+               <input
+                   defaultValue={values.lastName}
+                   className="form-control"
+                   onChange={(e) =>
+                       setValues({ ...values, lastName: e.target.value })
+                   }
+                   type="text"
+                   placeholder="last_name"
+               />
+             </div>
+           </div>
 
-          <div className="w-25">
-            <div className="d-flex flex-column mb-3">
-              <label className="form__category-lable" htmlFor="">
-                phone
-              </label>
-              <input
-                defaultValue={values.phone}
-                className="form-control"
-                onChange={(e) =>
-                  setValues({ ...values, phone: e.target.value })
-                }
-                type="text"
-                placeholder="phone"
-              />
-            </div>
+           <div className="w-25">
+             <div className="d-flex flex-column mb-3">
+               <label className="form__category-lable" htmlFor="">
+                 phone
+               </label>
+               <input
+                   defaultValue={values.phone}
+                   className="form-control"
+                   onChange={(e) =>
+                       setValues({ ...values, phone: e.target.value })
+                   }
+                   type="text"
+                   placeholder="phone"
+               />
+             </div>
 
-            <div className="d-flex flex-column mb-3">
-              <label className="form__category-lable" htmlFor="">
-                username
-              </label>
-              <input
-                defaultValue={values.username}
-                className="form-control"
-                onChange={(e) =>
-                  setValues({ ...values, username: e.target.value })
-                }
-                type="text"
-                placeholder="username"
-              />
-            </div>
-          </div>
+             <div className="d-flex flex-column mb-3">
+               <label className="form__category-lable" htmlFor="">
+                 username
+               </label>
+               <input
+                   defaultValue={values.username}
+                   className="form-control"
+                   onChange={(e) =>
+                       setValues({ ...values, username: e.target.value })
+                   }
+                   type="text"
+                   placeholder="username"
+               />
+             </div>
+           </div>
 
-          <div className="w-25">
-            <div className="d-flex flex-column mb-3">
-              <label className="form__category-lable" htmlFor="">
-                password
-              </label>
-              <input
-                defaultValue={values.password}
-                className="form-control"
-                onChange={(e) =>
-                  setValues({ ...values, password: e.target.value })
-                }
-                type="text"
-                placeholder="password"
-              />
-            </div>
+           <div className="w-25">
+             <div className="d-flex flex-column mb-3">
+               <label className="form__category-lable" htmlFor="">
+                 password
+               </label>
+               <input
+                   defaultValue={values.password}
+                   className="form-control"
+                   onChange={(e) =>
+                       setValues({ ...values, password: e.target.value })
+                   }
+                   type="text"
+                   placeholder="password"
+               />
+             </div>
 
-            <div className="d-flex flex-column mb-3">
-              <label className="form__category-lable" htmlFor="">
-                student_subject
-              </label>
-              <Select
-                onChange={(e) => setValues({ ...values, subjects_ids: e })}
-                mode="tags"
-                style={{
-                  width: "100%",
-                }}
-                placeholder="Tags Mode"
-                options={subjects.map((item) => ({
-                  value: item.id,
-                  label: item.name,
-                }))}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="d-flex justify-content-end me-4 mt-4">
-          <Button title="edit_teacher" variant="primary" type="sumit" />
-        </div>
-      </form>
+             <div className="d-flex flex-column mb-3">
+               <label className="form__category-lable" htmlFor="">
+                 student_subject
+               </label>
+               <Select
+                   onChange={(e) => setValues({ ...values, subjects_ids: e })}
+                   mode="tags"
+                   style={{
+                     width: "100%",
+                   }}
+                   placeholder="Tags Mode"
+                   options={subjects.map((item) => ({
+                     value: item.id,
+                     label: item.name,
+                   }))}
+               />
+             </div>
+           </div>
+         </div>
+         <div className="d-flex justify-content-end me-4 mt-4">
+           <Button title="edit_teacher" variant="primary" type="sumit" />
+         </div>
+       </form>
+     </div>
     </>
   );
 };

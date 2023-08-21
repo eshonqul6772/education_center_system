@@ -1,2 +1,1 @@
-// export {default} from "./StudentLogin"
-export {default} from "./text"
+export {default} from "./StudentLogin"

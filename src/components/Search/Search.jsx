@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./serach.scss";
+import "./serach.module.scss";
 
 const Search = () => {
   return (

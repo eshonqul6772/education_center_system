@@ -1,44 +1,26 @@
 import {Route, Routes} from 'react-router-dom';
-
 import {useSelector} from 'react-redux';
 
-import Navbar from 'layout/Navbar';
-import Menu from 'layout/Menu';
-import AdminLogin from 'pages/AdminLogin';
-import StudentLogin from 'pages/StudenLogin/StudentLogin';
-import TeacherLogin from 'pages/TeacherLogin';
-import Staff from 'pages/Staf';
-import Home from 'pages/Home';
-import Group from 'pages/Dashboard/Group';
-import EditGroup from 'pages/Dashboard/Group/EditGroup';
-import Teacher from 'pages/Dashboard/Teacher';
-import EditTeacher from 'pages/Dashboard/Teacher/EditTeacher';
-import User from 'pages/Dashboard/User';
-import Student from 'pages/Dashboard/Student';
-import EditStudent from 'pages/Dashboard/Student/EditSudent';
-import Subject from 'pages/Dashboard/Subject';
-import EditSubject from 'pages/Dashboard/Subject/EditSubject';
-import Support from 'pages/Support';
-import Test from 'pages/Dashboard/Test';
-import ErrorPage from 'components/ErrorPage/ErrorPage';
-import Dashboard from 'pages/Dashboard/Dashboard';
-import GetTime from 'components/getTime/';
-import Search from 'components/Search/Search';
-import EditUser from './pages/Dashboard/User/EditUser';
+
+import * as  Dashboard from 'pages/Dashboard';
+import * as AuthPage from './pages'
+import * as Components from './components'
+import * as Layout from './layout'
+
+
 
 function App() {
     const {isLoggedIn} = useSelector((state) => state.auth);
 
-
     if (!isLoggedIn) {
         return (
             <Routes>
-                <Route path="/" element={<Home/>}/>
-                <Route exact path="/studentlogin" element={<StudentLogin/>}/>
-                <Route path="/staff" element={<Staff/>}/>
-                <Route path="/admin" element={<AdminLogin/>}/>
-                <Route path="/teacher" element={<TeacherLogin/>}/>
-                <Route path="support" element={<Support/>}/>
+                <Route path="/" element={<AuthPage.Home/>}/>
+                <Route exact path="/studentlogin" element={<AuthPage.StudentLogin/>}/>
+                <Route path="/staff" element={<AuthPage.Staff/>}/>
+                <Route path="/admin" element={<AuthPage.AdminLogin/>}/>
+                <Route path="/teacher" element={<AuthPage.TeacherLogin/>}/>
+                <Route path="support" element={<AuthPage.Support/>}/>
             </Routes>
         );
     }
@@ -46,43 +28,40 @@ function App() {
         <>
             <div className="dashboard">
                 <div style={{inlineSize: '18%'}}>
-                    <Menu/>
+                    <Layout.Menu/>
                 </div>
 
                 <div style={{inlineSize: '82%'}}>
-                    <Navbar/>
-                    <Search/>
+                    <Layout.Navbar/>
 
                     <Routes>
-                        <Route path="/dashboard" element={<Dashboard/>}/>
+                        <Route path="/dashboard" element={<Dashboard.DashboardHome/>}/>
 
-                        <Route path="/group" element={<Group/>}/>
+                        <Route path="/group" element={<Dashboard.Group/>}/>
 
-                        <Route path="/group/:id" element={<EditGroup/>}/>
+                        <Route path="/group/:id" element={<Dashboard.EditGroup/>}/>
 
-                        <Route path="/teacher" element={<Teacher/>}/>
+                        <Route path="/teacher" element={<Dashboard.Teacher/>}/>
 
-                        <Route path="/teacher/:id" element={<EditTeacher/>}/>
+                        <Route path="/teacher/:id" element={<Dashboard.EditTeacher/>}/>
 
-                        <Route path="/user" element={<User/>}/>
+                        <Route path="/user" element={<Dashboard.User/>}/>
 
-                        <Route path="/user/:id" element={<EditUser/>}/>
+                        <Route path="/user/:id" element={<Dashboard.EditUser/>}/>
 
-                        <Route path="/student" element={<Student/>}/>
+                        <Route path="/student" element={<Dashboard.Student/>}/>
 
-                        <Route path="/student/:id" element={<EditStudent/>}/>
+                        <Route path="/student/:id" element={<Dashboard.EditStudent/>}/>
 
-                        <Route path="/subject" element={<Subject/>}/>
+                        <Route path="/subject" element={<Dashboard.Subject/>}/>
 
-                        <Route path="/subject/:id" element={<EditSubject/>}/>
+                        <Route path="/subject/:id" element={<Dashboard.EditSubject/>}/>
 
-                        <Route path="/test" element={<Test/>}/>
-
-                        <Route path="*" element={<ErrorPage/>}/>
+                        <Route path="*" element={<Components.Errorpage/>}/>
                     </Routes>
                 </div>
             </div>
-            <GetTime/>
+            <Components.GetTime/>
         </>
     );
 }

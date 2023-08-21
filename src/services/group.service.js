@@ -8,9 +8,12 @@ const getData = (data) => {
   return axios.post(API_URL + '/groups/pageable', data, {headers: authHeader()})
 }
 
-const searchGroup = (search, data) => {
-  return axios.post(API_URL + `groups/pageable/search?search=${search}`, data, {
+const searchGroup = (search = '', data) => {
+  return axios.post(API_URL + `/groups/pageable`, data, {
     headers: authHeader(),
+    params: {
+      search: search
+    }
   });
 };
 

@@ -5,10 +5,14 @@ import authHeader from './auth-header.js'
 
 const API_URL = process.env.REACT_APP_MY_VARIABLE;
 
-const getAll = (data) => {
-  return axios.post(API_URL + '/teachers/pageable',data, { headers: authHeader() })
-}
-
+const getAll = (search = '', data) => {
+  return axios.post(API_URL + `/teachers/pageable`, data, {
+    headers: authHeader(),
+    params: {
+      search: search
+    }
+  });
+};
 const AddData = (data) => {
   return axios.post(API_URL + '/teachers',data, { headers: authHeader() })
 }

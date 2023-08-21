@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Input } from "antd";
 import toast, { Toaster } from "react-hot-toast";
+
+
 import { login } from "reducers/actions/auth";
 import Img from "assets/imgs/teacher.jpg";
 import Logo from "assets/imgs/muazacademy.png";
@@ -86,7 +88,7 @@ const StudenLogin = () => {
               onChange={handleInputChange}
             />
           </div>
-          <button className="btn__submit">Login</button> ~
+          <button className="btn__submit">Login</button>
         </form>
       </div>
     </>
