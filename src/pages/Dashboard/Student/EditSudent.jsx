@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import {HiOutlineRefresh} from 'react-icons/hi';
+import {useNavigate} from 'react-router-dom';
 import { Select } from "antd";
+import toast, {Toaster} from 'react-hot-toast';
 
 import getStudent from "services/student.service";
 import getSubject from "services/subject.service.js";
 import Button from "components/Button";
 import "../Group/Group.scss";
 
+
 const EditStudent = () => {
+  const navigate = useNavigate()
   const { id } = useParams();
   const [subjects, setSubject] = useState([]);
 
@@ -21,15 +26,19 @@ const EditStudent = () => {
   });
 
   const hendelSubmit = (evt) => {
+    toast.success('success update data')
     evt.preventDefault();
-    getStudent
-      .ubdate(id, values)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+
+    setTimeout(()=>{
+      getStudent
+          .ubdate(id, values)
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+    },2000)
   };
 
   useEffect(() => {
@@ -170,7 +179,12 @@ const EditStudent = () => {
          </div>
          <div className="d-flex justify-content-end me-4 mt-4">
 
-           <Button title="edit_student" variant="primary" type="sumit" />
+
+             <div className='d-flex justify-content-end gap-3'>
+               <Button title="save_edit" variant="success" type="sumit"/>
+               <Button onClick={()=> navigate('/subject')} title={<HiOutlineRefresh fontSize='20px'/>} variant='secondary' type='button'/>
+             </div>
+
          </div>
        </form>
      </div>

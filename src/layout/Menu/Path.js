@@ -3,6 +3,7 @@ import { AiOutlineTeam,AiOutlineDashboard } from "react-icons/ai";
 import { PiStudentBold } from "react-icons/pi";
 import { MdGroups2, MdOutlineSubject } from "react-icons/md";
 import { LiaUserCircleSolid } from "react-icons/lia";
+import {BsFillClipboard2DataFill} from "react-icons/bs"
 
 const path= [
   {
@@ -54,14 +55,14 @@ const path= [
     ),
   },
 
-  // {
-  //   path: "/test",
-  //   title: (
-  //     <>
-  //       <MdOutlineSubject size='30px' /> <span>Test</span>
-  //     </>
-  //   ),
-  // },
+   {
+     path: "/resources",
+     title: (
+       <>
+         <BsFillClipboard2DataFill  size='30px' /> <span>Resources</span>
+       </>
+     ),
+   },
 ];
 
 export default path;

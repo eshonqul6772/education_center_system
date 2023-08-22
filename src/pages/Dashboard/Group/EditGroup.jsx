@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import {HiOutlineRefresh} from 'react-icons/hi';
 import { Select } from "antd";
+const { Option, OptGroup } = Select;
 
 import GetGroup from "services/group.service.js";
 import getSubject from "services/subject.service";
 import Button from "components/Button";
 
-const { Option, OptGroup } = Select;
-
 const EditGroup = () => {
+  const navigate = useNavigate()
   const { id } = useParams();
-  const navigate = useNavigate("");
+
 
   const [subject, setSubject] = useState([]);
   const [values, setValues] = useState({
@@ -40,13 +41,16 @@ const EditGroup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    GetGroup.ubdate(id, values)
-      .then((res) => {
-        navigate("/groups");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    setTimeout(()=>{
+      GetGroup.ubdate(id, values)
+          .then((res) => {
+            navigate("/groups");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+    },2000)
+
   };
 
   useEffect(() => {
@@ -108,7 +112,10 @@ const EditGroup = () => {
                   </Select>
                 </div>
 
-                <Button title="edit" variant="primary" type="sumit" />
+                <div className='d-flex gap-2'>
+                  <Button title="save_edit" variant="success" type="sumit"/>
+                  <Button onClick={()=> navigate('/subject')} title={<HiOutlineRefresh fontSize='20px'/>} variant='secondary' type='button'/>
+                </div>
               </div>
             </div>
           </div>

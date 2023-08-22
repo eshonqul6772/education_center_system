@@ -38,24 +38,21 @@ function App() {
                         <Route path="/dashboard" element={<Dashboard.DashboardHome/>}/>
 
                         <Route path="/group" element={<Dashboard.Group/>}/>
-
                         <Route path="/group/:id" element={<Dashboard.EditGroup/>}/>
 
                         <Route path="/teacher" element={<Dashboard.Teacher/>}/>
-
                         <Route path="/teacher/:id" element={<Dashboard.EditTeacher/>}/>
 
                         <Route path="/user" element={<Dashboard.User/>}/>
-
                         <Route path="/user/:id" element={<Dashboard.EditUser/>}/>
 
                         <Route path="/student" element={<Dashboard.Student/>}/>
-
                         <Route path="/student/:id" element={<Dashboard.EditStudent/>}/>
 
                         <Route path="/subject" element={<Dashboard.Subject/>}/>
-
                         <Route path="/subject/:id" element={<Dashboard.EditSubject/>}/>
+
+                        <Route path="/resources" element={<Dashboard.Resources/>}/>
 
                         <Route path="*" element={<Components.Errorpage/>}/>
                     </Routes>

@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react'
-import {useNavigate, useParams} from 'react-router-dom'
+import React, {useEffect, useState} from 'react';
+import {useNavigate, useParams} from 'react-router-dom';
+import {HiOutlineRefresh} from 'react-icons/hi'
 import toast, {Toaster} from 'react-hot-toast';
 
-import ServicesSubject from 'services/subject.service.js'
-import Button from 'components/Button'
+import ServicesSubject from 'services/subject.service.js';
+import Button from 'components/Button';
 
 
 const EditSubject = () => {
@@ -28,17 +29,16 @@ const EditSubject = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        toast.success('success update data')
+        setTimeout(()=>{
 
-       setTimeout(()=>{
-           toast.success('success update data')
            ServicesSubject.ubdate(id, values)
                .then((res) => {
 
-                   navigate('/subject');
                }).catch((err) => {
                console.log(err);
            });
-       },1000)
+       },2000)
     }
 
 
@@ -66,7 +66,10 @@ const EditSubject = () => {
                                 />
                             </div>
 
-                            <Button title="edit_subject" variant="primary" type="sumit"/>
+                           <div className='d-flex gap-2'>
+                               <Button title="save_edit" variant="success" type="sumit"/>
+                               <Button onClick={()=> navigate('/subject')} title={<HiOutlineRefresh fontSize='20px'/>} variant='secondary' type='button'/>
+                           </div>
                         </div>
                     </div>
                 </div>

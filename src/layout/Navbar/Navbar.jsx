@@ -34,12 +34,12 @@ const Navbar = () => {
     const items = [
         {
             key: '1',
-            label: <button className="fs-3" onClick={() => navigate('/user')}><LiaUserCircleSolid
-                size="40px"/>{user.firstName}</button>,
+            label: <button className="fs-4" onClick={() => navigate('/user')}><LiaUserCircleSolid
+                size="30px"/>{user.firstName}</button>,
         },
         {
             key: '2',
-            label: <button className="fs-3" onClick={handleLogout}><FiLogOut size="40px" color="red"/>Logout</button>,
+            label: <button className="fs-4" onClick={handleLogout}><FiLogOut size="30px" color="red"/>Logout</button>,
         },
     ];
 

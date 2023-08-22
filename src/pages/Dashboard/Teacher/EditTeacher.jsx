@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import {useNavigate} from 'react-router-dom';
 import { Select } from "antd";
 
 import getTeacher from "services/teacher.service";
 import getSubject from "services/subject.service.js";
 import Button from "components/Button";
 import "../Group/Group.scss";
+import {HiOutlineRefresh} from 'react-icons/hi';
 
 const EditTeacher = () => {
+  const navigate = useNavigate()
   const { id } = useParams();
   const [subjects, setSubject] = useState([]);
 
@@ -165,7 +168,8 @@ const EditTeacher = () => {
            </div>
          </div>
          <div className="d-flex justify-content-end me-4 mt-4">
-           <Button title="edit_teacher" variant="primary" type="sumit" />
+           <Button title="save_edit" variant="success" type="sumit"/>
+           <Button onClick={()=> navigate('/subject')} title={<HiOutlineRefresh fontSize='20px'/>} variant='secondary' type='button'/>
          </div>
        </form>
      </div>
