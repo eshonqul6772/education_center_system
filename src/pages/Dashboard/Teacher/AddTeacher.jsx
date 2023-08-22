@@ -36,8 +36,6 @@ const EditTeacher = () => {
       subjects_ids: values.subject,
       status: "ACTIVE",
     };
-
-    console.log(data);
   
 
     AddTeacher.AddData(data)

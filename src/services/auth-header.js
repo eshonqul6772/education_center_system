@@ -1,4 +1,4 @@
-export default function authHeader() {
+const  authHeader = ()=> {
     const token = localStorage.getItem('token');
 
     if (token) {
@@ -7,3 +7,5 @@ export default function authHeader() {
         return {'ngrok-skip-browser-warning': true};
     }
 }
+
+export default authHeader

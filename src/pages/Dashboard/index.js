@@ -10,3 +10,4 @@ export {default as Teacher} from "./Teacher";
 export {default as EditTeacher} from "./Teacher/EditTeacher";
 export {default as DashboardHome} from "./Dashboard.jsx"
 export {default as Resources} from "./Resources"
+export {default as UploadResoursec} from  "./Resources/Upload"
