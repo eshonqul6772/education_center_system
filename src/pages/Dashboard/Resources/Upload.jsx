@@ -21,8 +21,8 @@ const Upload = (event) => {
 
 
     return (
-
-        <div className="card">
+        <div className='table__box'>
+              <div className="box">
             <h3>Upload Files</h3>
             <label  htmlFor='fileID'>
             <div className="drop_box">
@@ -34,6 +34,7 @@ const Upload = (event) => {
 
         </div>
 
+        </div>
     );
 };
 

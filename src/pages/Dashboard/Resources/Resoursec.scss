@@ -1,4 +1,4 @@
-.card {
+.box {
   border-radius: 10px;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
   width: 600px;
@@ -7,7 +7,7 @@
   padding: 10px 30px 40px;
 }
 
-.card h3 {
+.box h3 {
   font-size: 22px;
   font-weight: 600;
 
@@ -64,3 +64,29 @@
   padding: 12px 20px;
   border-radius: 4px;
 }
+
+
+.responsiveResoursec{
+  margin: 20px 0;
+  height: 70vh;
+  overflow-y:scroll;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+  }
+  
+  ::-webkit-scrollbar-track {
+  border: 1px solid yellowgreen;
+  border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+  background: yellowgreen;  
+  border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+  background: #88ba1c;  
+  }
