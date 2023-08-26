@@ -4,13 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { Input } from "antd";
 import toast, { Toaster } from "react-hot-toast";
 
-
 import { login } from "reducers/actions/auth";
+
 import Img from "assets/imgs/teacher.jpg";
 import Logo from "assets/imgs/muazacademy.png";
-import "./StudentLogin.scss";;
 
-const StudenLogin = () => {
+import "./StudentLogin.scss";
+
+const StudentLogin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate("");
 
@@ -95,4 +96,4 @@ const StudenLogin = () => {
   );
 };
 
-export default StudenLogin;
+export default StudentLogin;

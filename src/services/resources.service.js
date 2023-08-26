@@ -1,18 +1,35 @@
-import axios from 'axios';
+import axios from "axios";
 
-import authHeaders from './auth-header';
+import authHeaders from "./auth-header";
 const API_URL = process.env.REACT_APP_MY_VARIABLE;
 
+const uploadFile = (data) => {
+  return axios.post(API_URL + `/files/upload`, data, {
+    headers: {
+      ...authHeaders(),
+      "Content-Type": "multipart/form-data",
+    },
+  });
+};
 
-const uploadFile = (data)=>{
-    return axios.post(API_URL+ `/files/upload`, data,{
-        headers:{
-            ...authHeaders(),
-            "Content-Type": "multipart/form-data",
-        }
-    })
-}
+const getFile = (search = "", data) => {
+  return axios.post(API_URL + "/files/pageable", data, {
+    headers: authHeaders(),
+    params: {
+      search: search,
+    },
+  });
+};
+
+
+const viewFile = ( heshId) => {
+    return axios.get(API_URL + "/files/file-preview/" + heshId, {
+      headers: authHeaders(),
+    });
+  };
 
 export default {
-    uploadFile,
-}
+  uploadFile,
+  getFile,
+  viewFile
+};

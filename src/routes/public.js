@@ -3,26 +3,26 @@ import * as Public from 'pages/public';
 export default [
     {
         path: '/',
-        Page: <Public.Home />
+        Page: Public.Home
     },
     {
         path: '/staff',
-        Page: <Public.Staff />
+        Page: Public.Staff
     },
     {
         path: '/admin',
-        Page: <Public.AdminLogin />
+        Page: Public.AdminLogin
     },
     {
         path: '/teacher',
-        Page: <Public.TeacherLogin />
+        Page: Public.TeacherLogin
     },
     {
         path: '/studentlogin',
-        Page: <Public.StudentLogin />
+        Page: Public.StudentLogin
     },
     {
         path: '/support',
-        Page: <Public.Support />
+        Page: Public.Support
     }
 ];

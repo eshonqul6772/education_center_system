@@ -3,39 +3,29 @@ import {useNavigate} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import {Button, Dropdown} from 'antd';
 import {LiaUserCircleSolid} from 'react-icons/lia';
-import {FiLogOut, FiSettings} from 'react-icons/fi'
+import {FiLogOut, FiSettings} from 'react-icons/fi';
+
+import useAuth from 'reducers/hooks';
+
+import {LOGOUT} from 'reducers/types';
 
 import './Navbar.scss';
-import {LOGOUT} from 'reducers/types';
-import MeServisece from 'services/user.service'
 
 const Navbar = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [user, setUser] = useState('')
-
-    useEffect(() => {
-        MeServisece.getUser().then((res) => {
-            setUser(res.data)
-          // console.log(res.data)
-            // if (res.data.status === '200') {
-            // }
-            // if (res.status === '401') {
-            //     navigate('/')
-            //     dispatch({type: LOGOUT})
-            // }
-        })
-    }, []);
+    const { firstName } = useAuth();
 
     const handleLogout = () => {
-        navigate('/')
-        dispatch({type: LOGOUT})
+        navigate('/');
+        dispatch({type: LOGOUT});
     };
+
     const items = [
         {
             key: '1',
             label: <button className="fs-4" onClick={() => navigate('/user')}><LiaUserCircleSolid
-                size="30px"/>{user.firstName}</button>,
+                size="30px"/>{firstName}</button>,
         },
         {
             key: '2',
