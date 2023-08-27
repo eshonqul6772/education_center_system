@@ -22,7 +22,7 @@ const initialState = {
   }
 };
 
-function auth(state = initialState, action) {
+function reduce(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
@@ -78,4 +78,4 @@ function auth(state = initialState, action) {
   }
 }
 
-export default  auth;
+export default  reduce;
