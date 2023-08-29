@@ -82,7 +82,7 @@ const AddUser = () => {
                   <label className='form__category-lable' htmlFor=''>
                     group_name
                   </label>
-                  <input
+                  <input className='form-control'
                     onChange={(e) => setValues({ ...values, name: e.target.value })}
                     type='text'
                     placeholder='group name'

@@ -1,19 +1,15 @@
-import React from 'react';
+import React from "react";
 
-import useAuth from 'reducers/hooks';
+import useAuth from "reducers/hooks";
 
 const CheckRole = ({ accessRoles, Page }) => {
-    const { role } = useAuth();
+  const { role } = useAuth();
 
-    if (accessRoles.includes(role)) {
-        return <>{Page}</>;
-    }
+  if (accessRoles.includes(role)) {
+    return <>{Page}</>;
+  }
 
-    return (
-        <div>
-            Access Denied
-        </div>
-    );
+  return null;
 };
 
 export default CheckRole;

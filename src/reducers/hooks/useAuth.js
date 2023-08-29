@@ -9,6 +9,7 @@ const useAuth = () => {
     const username = useSelector(state => state.auth.profile.username);
     const phone = useSelector(state => state.auth.profile.phone);
     const role = useSelector(state => state.auth.profile.role);
+    const id = useSelector(state => state.auth.profile.id)
 
     return {
         isLoggedIn,
@@ -18,7 +19,8 @@ const useAuth = () => {
         lastName,
         username,
         phone,
-        role
+        role,
+        id
     }
 }
 

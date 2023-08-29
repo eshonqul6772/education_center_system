@@ -18,7 +18,8 @@ const initialState = {
     lastName: '',
     username: '',
     phone: '',
-    role: ''
+    role: '',
+    id:''
   }
 };
 
@@ -62,15 +63,19 @@ function reduce(state = initialState, action) {
           lastName: payload.lastName,
           username: payload.username,
           phone: payload.phone,
-          role: payload.role.name
-        }
+          role: payload.role.name,
+          id: payload.role.id
+        },
       }
+
     }
     case LOGOUT: {
       localStorage.removeItem('token');
 
       return {
-        ...initialState
+        ...initialState,
+        isLoggedIn: false,
+        token: null
       };
     }
     default:

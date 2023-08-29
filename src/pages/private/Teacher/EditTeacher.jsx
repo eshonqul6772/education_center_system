@@ -169,7 +169,7 @@ const EditTeacher = () => {
          </div>
          <div className="d-flex justify-content-end me-4 mt-4">
            <Button title="save_edit" variant="success" type="sumit"/>
-           <Button onClick={()=> navigate('/subject')} title={<HiOutlineRefresh fontSize='20px'/>} variant='secondary' type='button'/>
+           <Button onClick={()=> navigate('/teacher')} title={<HiOutlineRefresh fontSize='20px'/>} variant='secondary' type='button'/>
          </div>
        </form>
      </div>

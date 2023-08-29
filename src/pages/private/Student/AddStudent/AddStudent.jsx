@@ -32,7 +32,7 @@ const AddStudent = () => {
   };
 
   const hendelSubmit = (evt) => {
-    evt.preventDefault();
+
 
     const data = {
       firstName: values.firstName,
@@ -44,8 +44,6 @@ const AddStudent = () => {
       status: "ACTIVE",
     };
 
-    console.log(data);
-
     StudentService.addStudent(data)
       .then((res) => {
         console.log(res);
@@ -53,6 +51,7 @@ const AddStudent = () => {
       .catch((err) => {
         console.log(err);
       });
+    handleCancel()
   };
 
   useEffect(() => {
@@ -80,7 +79,7 @@ const AddStudent = () => {
                   <label className="form__category-lable" htmlFor="">
                     first_name
                   </label>
-                  <input
+                  <input className='form-control'
                     onChange={(e) =>
                       setValues({ ...values, firstName: e.target.value })
                     }
@@ -93,7 +92,7 @@ const AddStudent = () => {
                   <label className="form__category-lable" htmlFor="">
                     last_name
                   </label>
-                  <input
+                  <input className='form-control'
                     onChange={(e) =>
                       setValues({ ...values, lastName: e.target.value })
                     }
@@ -106,7 +105,7 @@ const AddStudent = () => {
                   <label className="form__category-lable" htmlFor="">
                     phone
                   </label>
-                  <input
+                  <input className='form-control'
                     onChange={(e) =>
                       setValues({ ...values, phone: e.target.value })
                     }
@@ -119,7 +118,7 @@ const AddStudent = () => {
                   <label className="form__category-lable" htmlFor="">
                     username
                   </label>
-                  <input
+                  <input className='form-control'
                     onChange={(e) =>
                       setValues({ ...values, username: e.target.value })
                     }
@@ -132,7 +131,7 @@ const AddStudent = () => {
                   <label className="form__category-lable" htmlFor="">
                     password
                   </label>
-                  <input
+                  <input className='form-control'
                     onChange={(e) =>
                       setValues({ ...values, password: e.target.value })
                     }

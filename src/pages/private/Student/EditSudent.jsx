@@ -31,7 +31,7 @@ const EditStudent = () => {
 
     setTimeout(()=>{
       getStudent
-          .ubdate(id, values)
+          .update(id, values)
           .then((res) => {
             console.log(res);
           })

@@ -1,14 +1,11 @@
 import React from 'react';
 
-import Loader from 'components/Loader';
-import {Route} from 'react-router-dom';
-
-function Dashboard () {
+const Dashboard = ()=> {
     
     return (
         <>
           <div className='table__box'>
-
+                <h2 className='text-align-center'>Dashbaord</h2>
           </div>
         </>
     );

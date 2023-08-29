@@ -26,7 +26,7 @@ const remove = (id) => {
   return axios.delete(API_URL + '/students/' + id, { headers: authHeader() })
 }
 
-const ubdate = (id,data) => {
+const update = (id,data) => {
   return axios.put(API_URL + `/students/${id}`, data, { headers: authHeader() })
 }
 
@@ -36,5 +36,5 @@ export default {
   getStudent,
   addStudent,
   remove,
-  ubdate
+  update
 }

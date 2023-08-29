@@ -70,6 +70,17 @@ const menu = [
             </>
         ),
     },
+
+    {
+        accessRoles: ['ADMIN'],
+        path: '/test',
+        title: (
+            <>
+                <MdOutlineSubject size="30px"/> <span>Test</span>
+            </>
+        ),
+    },
+
 ];
 
 export default menu;

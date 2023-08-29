@@ -66,8 +66,8 @@ function Subject() {
           <input id='search' placeholder="search..." className="form-control"
                  onChange={e => searchData(e.target.value)}
           />
-          <label htmlFor='search' className='search_icon'>
-            <button className='search__btn'><AiOutlineSearch size='20px' color='white'/></button>
+          <label htmlFor='search' className='search_icon search__btn'>
+            <AiOutlineSearch size='20px' color='white'/>
           </label>
         </div>
         <div className="table__box">

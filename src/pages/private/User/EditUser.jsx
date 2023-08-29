@@ -9,15 +9,15 @@ import Button from 'components/Button'
 
 const EditSubject = () => {
     const {id} = useParams();
-    const navigate = useNavigate('');
+    const navigate = useNavigate();
 
     const [values, setValues] = useState({
         firstName: '',
         lastName: '',
-        phone:'',
+        phone: '',
         username: '',
-        password:'',
-        roleId:'',
+        password: '',
+        roleId: '',
         status: 'ACTIVE'
     });
 
@@ -26,8 +26,8 @@ const EditSubject = () => {
         ServiceUser.getUserId(id)
             .then((res) => {
                 console.log(res.data)
-                const {firstName, lastName, phone,username, password,roleId, status} = res.data;
-                setValues({firstName,lastName, phone,username, password, roleId, status});
+                const {firstName, lastName, phone, username, password, roleId, status} = res.data;
+                setValues({firstName, lastName, phone, username, password, roleId, status});
             })
             .catch((err) => console.log(err));
     }, [id]);
@@ -48,55 +48,55 @@ const EditSubject = () => {
 
     return (
         <div className="table__box">
-            <form onSubmit={handleSubmit} className='w-100'>
+            <form onSubmit={handleSubmit} className="w-100">
 
-
-                    <div className="d-flex justify-content-between w-100 mb-3">
-                        <div className="w-25">
-                            <label className="form__category-lable" htmlFor="">
-                                firs_name
-                            </label>
-
-                            <input className="form-control"
-                                   onChange={(e) => setValues({...values, firstName: e.target.value})}
-                                   type="text"
-                                   placeholder="first_name"
-                                   defaultValue={values.firstName}
-                            />
-                        </div>
-
-                        <div className="w-25">
-                            <label className="form__category-lable" htmlFor="">
-                               last_name
-                            </label>
-
-                            <input className="form-control"
-                                   onChange={(e) => setValues({...values, lastName: e.target.value})}
-                                   type="text"
-                                   placeholder="subject name"
-                                   defaultValue={values.lastName}
-                            />
-                        </div>
-
-
-                        <div className="w-25">
-                            <label className="form__category-lable" htmlFor="">
-                               phone
-                            </label>
-
-                            <input className="form-control"
-                                   onChange={(e) => setValues({...values, phone: e.target.value})}
-                                   type="text"
-                                   placeholder="phone"
-                                   defaultValue={values.phone}
-                            />
-                        </div>
-                    </div>
 
                 <div className="d-flex justify-content-between w-100 mb-3">
                     <div className="w-25">
                         <label className="form__category-lable" htmlFor="">
-                           username
+                            firs_name
+                        </label>
+
+                        <input className="form-control"
+                               onChange={(e) => setValues({...values, firstName: e.target.value})}
+                               type="text"
+                               placeholder="first_name"
+                               defaultValue={values.firstName}
+                        />
+                    </div>
+
+                    <div className="w-25">
+                        <label className="form__category-lable" htmlFor="">
+                            last_name
+                        </label>
+
+                        <input className="form-control"
+                               onChange={(e) => setValues({...values, lastName: e.target.value})}
+                               type="text"
+                               placeholder="subject name"
+                               defaultValue={values.lastName}
+                        />
+                    </div>
+
+
+                    <div className="w-25">
+                        <label className="form__category-lable" htmlFor="">
+                            phone
+                        </label>
+
+                        <input className="form-control"
+                               onChange={(e) => setValues({...values, phone: e.target.value})}
+                               type="text"
+                               placeholder="phone"
+                               defaultValue={values.phone}
+                        />
+                    </div>
+                </div>
+
+                <div className="d-flex justify-content-between w-100 mb-3">
+                    <div className="w-25">
+                        <label className="form__category-lable" htmlFor="">
+                            username
                         </label>
 
                         <input className="form-control"
@@ -113,7 +113,7 @@ const EditSubject = () => {
                         </label>
 
                         <input className="form-control"
-                               onChange={(e) => setValues({...values,password: e.target.value})}
+                               onChange={(e) => setValues({...values, password: e.target.value})}
                                type="text"
                                placeholder="password"
                                defaultValue={values.password}
@@ -131,12 +131,12 @@ const EditSubject = () => {
                                onChange={(e) => setValues({...values, username: e.target.value})}
                                type="text"
                                placeholder="usernmae"
-                               defaultValue='admin'
+                               defaultValue="admin"
                         />
                     </div>
                 </div>
 
-                    <Button title="edit_user" variant="primary" type="sumit"/>
+                <Button title="edit_user" variant="primary" type="sumit"/>
 
 
             </form>

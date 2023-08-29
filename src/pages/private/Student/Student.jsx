@@ -63,8 +63,8 @@ function Student() {
         <input type='text' id='search' placeholder="search..." className="form-control"
                onChange={e => searchData(e.target.value)}
         />
-        <label htmlFor='search' className='search_icon'>
-          <button className='search__btn'><AiOutlineSearch size='20px' color='white'/></button>
+        <label htmlFor='search' className='search_icon search__btn'>
+        <AiOutlineSearch size='20px' color='white'/>
         </label>
       </div>
 
@@ -130,7 +130,7 @@ function Student() {
 
         <Pagination
           className="my-3 d-flex justify-content-end"
-          pageSize={4}
+          pageSize={3}
           current={currentPage + 1}
           total={totalCount}
           onChange={(page) => setCurrentPage(page - 1)}

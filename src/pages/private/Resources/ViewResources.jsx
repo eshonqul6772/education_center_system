@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import ResourcesServisec from "services/resources.service";
+import ResourcesService from "services/resources.service";
 import Img from "assets/imgs/no-picture.jpg"
 
 
@@ -11,7 +11,7 @@ const ViewResources = () => {
   const [values, setValues] = useState([]);
 
   useEffect(() => {
-    ResourcesServisec.viewFile(hashId)
+    ResourcesService.viewFile(hashId)
       .then((res) => {
         setValues(res.data);
       })

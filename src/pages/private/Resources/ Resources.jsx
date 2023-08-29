@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
+import {useQuery} from 'react-query';
 import { useNavigate } from "react-router-dom";
 import { Pagination, Table } from "antd";
-import { MdModeEdit, MdDelete } from "react-icons/md";
 
 import getUploadFile from "services/resources.service";
-import ResourcesCard from "components/ResourcesCard";
 import Button from "components/Button/Button";
 import "./Resoursec.scss";
 
 const Resources = () => {
   const navigate = useNavigate();
-
   const [currentPage, setCurrentPage] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
   const [data, setData] = useState([]);

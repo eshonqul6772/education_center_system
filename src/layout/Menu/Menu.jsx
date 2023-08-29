@@ -1,37 +1,42 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 
+import useAuth from 'reducers/hooks';
 
-import Path from "./Path.js";
+import Logo from "assets/imgs/muazacademy.png";
+
+import menu from "./menu.js";
+
 import "./Menu.scss";
-import Logo from "../../assets/imgs/muazacademy.png";
 
 function Menu() {
+  const { role } = useAuth()
+
   return (
     <div className="menu">
       <ul className="menu__list">
         <div className="menu__list-logo">
           <Link
             className="menu__logo border-bottom border-dark"
-            to="/dashboard/"
+            to="/dashboard"
           >
             <img
               src={Logo}
               alt={Logo}
-              style={{ width: "150px", height: "50px" }}
+              style={{ inlineSize: "150px", blockSize: "50px" }}
             />
           </Link>
         </div>
 
-        {Path.map((e, id) => {
-          return (
-            <li className="menu__list-item" key={id}>
-              <NavLink to={e.path} className="menu__link">
-               {e.title}
-              </NavLink>
-            </li>
-          );
-        })}
+        {menu
+            .filter(item => item.accessRoles.includes(role))
+            .map(({ path, title }, index) => (
+                <li className="menu__list-item" key={path}>
+                  <NavLink to={path} className="menu__link">
+                    {title}
+                  </NavLink>
+                </li>
+            ))}
       </ul>
     </div>
   );

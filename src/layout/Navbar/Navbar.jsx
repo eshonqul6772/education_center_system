@@ -11,10 +11,11 @@ import {LOGOUT} from 'reducers/types';
 
 import './Navbar.scss';
 
+
 const Navbar = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const { firstName } = useAuth();
+    const {firstName} = useAuth();
 
     const handleLogout = () => {
         navigate('/');
@@ -24,7 +25,7 @@ const Navbar = () => {
     const items = [
         {
             key: '1',
-            label: <button className="fs-4" onClick={() => navigate('/user')}><LiaUserCircleSolid
+            label: <button className="fs-4 " onClick={() => navigate('/user')}><LiaUserCircleSolid
                 size="30px"/>{firstName}</button>,
         },
         {
@@ -38,7 +39,7 @@ const Navbar = () => {
             <div className="navbar__content">
                 <h2>Category_Title</h2>
 
-                <Dropdown overlayStyle={{width: '200px'}}
+                <Dropdown overlayStyle={{width: '200px', zIndex: '100000'}}
                           menu={{
                               items,
                           }}
