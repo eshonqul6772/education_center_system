@@ -1,15 +1,15 @@
-import React from "react";
+  import React from "react";
 import { NavLink, Link } from "react-router-dom";
 
 import useAuth from 'reducers/hooks';
 
 import Logo from "assets/imgs/muazacademy.png";
 
-import menu from "./menu.js";
+import menu from "./menuData";
 
 import "./Menu.scss";
 
-function Menu() {
+const Menu = ()=> {
   const { role } = useAuth()
 
   return (

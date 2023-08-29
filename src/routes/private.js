@@ -5,7 +5,7 @@ import {viewResources} from 'pages/private';
 export default [
     {
         path: '/dashboard',
-        accessRoles: ['ADMIN', 'STUDENT'],
+        accessRoles: ['ADMIN', 'STUDENT', 'TEACHER'],
         Page: Private.Dashbaord
     },
 

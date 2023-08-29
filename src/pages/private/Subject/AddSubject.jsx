@@ -13,6 +13,7 @@ const AddSubject = () => {
   const [selected, setSelected] = useState(null);
 
   const hendelSubmit = (evt) => {
+
     const data = {
       name: values.subject,
       status: "ACTIVE",

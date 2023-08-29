@@ -5,9 +5,9 @@ import {LiaUserCircleSolid} from 'react-icons/lia';
 import {BsFillClipboard2DataFill} from 'react-icons/bs';
 
 
-const menu = [
+const menuData = [
     {
-        accessRoles: ['STUDENT', 'ADMIN'],
+        accessRoles: ['STUDENT', 'ADMIN', 'TEACHER'],
         path: '/dashboard',
         title: (
             <>
@@ -83,4 +83,4 @@ const menu = [
 
 ];
 
-export default menu;
+export default menuData;
