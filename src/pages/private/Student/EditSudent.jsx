@@ -24,6 +24,7 @@ const EditStudent = () => {
     password: "",
     status: "ACTIVE",
   });
+  
 
   const hendelSubmit = (evt) => {
     toast.success('success update data')
