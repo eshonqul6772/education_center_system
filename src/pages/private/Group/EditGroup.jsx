@@ -3,12 +3,12 @@ import {useParams, useNavigate} from 'react-router-dom';
 import {HiOutlineRefresh} from 'react-icons/hi';
 import {Select} from 'antd';
 
-const {Option, OptGroup} = Select;
-
 
 import GetGroup from 'services/group.service';
 import getSubject from 'services/subject.service';
 import Button from 'components/Button';
+
+const {Option, OptGroup} = Select;
 
 const EditGroup = () => {
     const navigate = useNavigate()

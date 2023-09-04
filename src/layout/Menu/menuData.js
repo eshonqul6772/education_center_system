@@ -71,15 +71,15 @@ const menuData = [
         ),
     },
 
-    {
-        accessRoles: ['ADMIN'],
-        path: '/test',
-        title: (
-            <>
-                <MdOutlineSubject size="30px"/> <span>Test</span>
-            </>
-        ),
-    },
+    // {
+    //     accessRoles: ['ADMIN'],
+    //     path: '/test',
+    //     title: (
+    //         <>
+    //             <MdOutlineSubject size="30px"/> <span>Test</span>
+    //         </>
+    //     ),
+    // },
 
 ];
 

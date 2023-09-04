@@ -87,10 +87,10 @@ export default [
         Page: Private.viewResources
     },
 
-    {
-        path: 'test',
-        accessRoles: ['ADMIN'],
-        Page: Private.Test
-    },
+    // {
+    //     path: 'test',
+    //     accessRoles: ['ADMIN'],
+    //     Page: Private.Test
+    // },
 
 ];

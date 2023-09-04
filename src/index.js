@@ -4,15 +4,15 @@ import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import {QueryClient, QueryClientProvider} from 'react-query'
 
-const queryClient = new QueryClient()
-
-import './assets/styles/main.scss';
+import 'assets/styles/main.scss';
 
 import Auth from 'reducers/containers';
 
-import App from './App';
+import App from 'App';
 
-import store from './reducers/store';
+import store from 'reducers/store';
+
+const queryClient = new QueryClient()
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

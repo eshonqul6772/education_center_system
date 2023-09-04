@@ -3,6 +3,7 @@ import { Modal } from "antd";
 
 import AddSubjectServisece from "services/subject.service";
 import Button from "components/Button";
+import Input from 'components/Input';
 import "../Group/Group.scss";
 
 const AddSubject = () => {
@@ -48,7 +49,7 @@ const AddSubject = () => {
                   <label className="form__category-lable" htmlFor="">
                     subject_name
                   </label>
-                  <input
+                  <Input
                     className="form-control"
                     onChange={(e) =>
                       setValues({ ...values, subject: e.target.value })
