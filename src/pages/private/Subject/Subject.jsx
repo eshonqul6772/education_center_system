@@ -42,7 +42,7 @@ function Subject() {
       per_page: 3,
       sort: {
         name: 'id',
-        direction: 'desc',
+        direction: 'ascg',
       },
     }).then((res) => {
       setTotalCount(res.data.totalCount);
@@ -122,7 +122,7 @@ function Subject() {
           
           <Pagination
               className="my-3 d-flex justify-content-end"
-              pageSize={4}
+              pageSize={3}
               current={currentPage + 1}
               total={totalCount}
               onChange={(page) => setCurrentPage(page - 1)}
