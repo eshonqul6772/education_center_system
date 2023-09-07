@@ -27,7 +27,7 @@ function Subject() {
         .remove(id)
         .then(() => {
           setSelected(null);
-          setData();
+          getList();
         })
         .catch((err) => {
           console.log(err);
@@ -35,7 +35,7 @@ function Subject() {
   };
   
   
-  const searchData = (name) => {
+  const getList = (name) => {
     setLoading(true)
     subjectService.getData(name, {
       page: currentPage,
@@ -55,16 +55,19 @@ function Subject() {
   
   useEffect(() => {
     setTimeout(()=>{
-      searchData()
-    },1000)
+      getList()
+    },1000);
   }, [currentPage]);
   
   
   return (
       <>
         <div className='search_box table__box'>
-          <input id='search' placeholder="search..." className="form-control"
-                 onChange={e => searchData(e.target.value)}
+          <input
+              id='search'
+              placeholder="search..."
+              className="form-control"
+              onChange={e => getList(e.target.value)}
           />
           <label htmlFor='search' className='search_icon search__btn'>
             <AiOutlineSearch size='20px' color='white'/>
@@ -148,7 +151,7 @@ function Subject() {
             </div>
           </Modal>
           <div>
-            <AddSubject />
+            <AddSubject getList={getList} />
           </div>
         </div>
       </>

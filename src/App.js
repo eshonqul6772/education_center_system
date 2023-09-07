@@ -1,4 +1,5 @@
 import {Navigate, Route, Routes} from 'react-router-dom';
+import {QueryClient, QueryClientProvider} from 'react-query';
 
 import useAuth from 'reducers/hooks';
 
@@ -9,6 +10,8 @@ import * as Layout from './layout';
 
 import CheckRole from './utils/CheckRole';
 
+const queryClient = new QueryClient()
+
 function App() {
     const {isLoggedIn, isFetched, token} = useAuth();
 
@@ -18,13 +21,15 @@ function App() {
 
     if (!isLoggedIn && !token) {
         return (
-            <Routes>
-                {publicRoutes.map(({path, Page}) => (
-                    <Route path={path} element={<Page/>} key={path}/>
-                ))}
+           <QueryClientProvider client={queryClient}>
+               <Routes>
+                   {publicRoutes.map(({path, Page}) => (
+                       <Route path={path} element={<Page/>} key={path}/>
+                   ))}
 
-                <Route path="*" element={<Navigate to="/"/>}/>
-            </Routes>
+                   <Route path="*" element={<Navigate to="/"/>}/>
+               </Routes>
+           </QueryClientProvider>
         );
     }
 

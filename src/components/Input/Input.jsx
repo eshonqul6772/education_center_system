@@ -13,7 +13,7 @@ const Input = ({
                    message,
                    disabled,
                    autoFocus,
-                   onChange,
+                   // onChange,
                    onBlur
                }) => {
     const [isFocused, setFocused] = useState(false);
@@ -28,7 +28,7 @@ const Input = ({
                     isFocused && classes['input--focused']
                 )}
                 {...{value, type, name, placeholder, disabled, autoFocus}}
-                onChange={e => onChange && onChange(e.target.value)}
+                // onChange={e => onChange && onChange(e.target.value)}
                 onFocus={() => setFocused(true)}
                 onBlur={e => {
                     setFocused(false);

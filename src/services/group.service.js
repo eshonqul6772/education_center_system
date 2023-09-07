@@ -2,7 +2,7 @@ import axios from 'axios'
 
 import authHeader from './auth-header.js'
 
-const API_URL = process.env.REACT_APP_MY_VARIABLE;
+const API_URL = process.env.REACT_APP_MY_API;
 
 const getData = (data) => {
   return axios.post(API_URL + '/groups/pageable', data, {headers: authHeader()})
